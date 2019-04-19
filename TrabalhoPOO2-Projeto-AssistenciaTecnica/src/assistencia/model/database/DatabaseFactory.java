@@ -1,4 +1,4 @@
-package model.database;
+package assistencia.model.database;
 
 public class DatabaseFactory {
     public static Database getDatabase(String nome){
