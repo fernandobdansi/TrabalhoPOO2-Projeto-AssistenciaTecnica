@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assistencia.controller;
+package trabalhopoo2.projeto.assistenciatecnica;
 
 import java.net.URL;
 import java.util.ResourceBundle;
