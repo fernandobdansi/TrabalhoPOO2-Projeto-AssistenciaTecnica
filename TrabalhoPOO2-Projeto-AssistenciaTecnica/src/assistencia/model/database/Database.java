@@ -1,5 +1,5 @@
 
-package model.database;
+package assistencia.model.database;
 
 import java.sql.Connection;
 
