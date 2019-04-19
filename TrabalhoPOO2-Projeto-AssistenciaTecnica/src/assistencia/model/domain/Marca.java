@@ -9,18 +9,17 @@ package assistencia.model.domain;
  *
  * @author Fernando
  */
-public class Modelo {
+public class Marca {
 
-    private int cdModelo;
+    private int cdMarca;
     private String nome;
-    private Marca marca;
 
-    public int getCdModelo() {
-        return cdModelo;
+    public int getCdMarca() {
+        return cdMarca;
     }
 
-    public void setCdModelo(int cdModelo) {
-        this.cdModelo = cdModelo;
+    public void setCdMarca(int cdMarca) {
+        this.cdMarca = cdMarca;
     }
 
     public String getNome() {
@@ -31,21 +30,9 @@ public class Modelo {
         this.nome = nome;
     }
 
-    public Marca getMarca() {
-        return marca;
-    }
-
-    public void setMarca(Marca marca) {
-        this.marca = marca;
-    }
-
-    public Modelo() {
-    }
-
-    public Modelo(int cdModelo, String nome, Marca marca) {
-        this.cdModelo = cdModelo;
+    public Marca(int cdMarca, String nome) {
+        this.cdMarca = cdMarca;
         this.nome = nome;
-        this.marca = marca;
     }
 
     @Override
