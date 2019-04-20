@@ -14,20 +14,22 @@ import java.util.List;
  */
 public class OrdemDeServico {
 
+    private int cdOrdemDeServico;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
+    private String descricaoProblema;
+    private double valorTotal;
     private Cliente cliente;
     private Dispositivo dispositivo;
     private List<ItemServicoOrdem> itemServicoOrdem;
     private Tecnico tecnico;
     private Status status;
-    private LocalDate dataEntrada;
-    private LocalDate dataSaida;
-    private String descricaoProblema;
-    private double valorTotal;
 
     public OrdemDeServico() {
     }
 
-    public OrdemDeServico(Cliente cliente, Dispositivo dispositivo, List<ItemServicoOrdem> itemServicoOrdem, Tecnico tecnico, Status status, LocalDate dataEntrada, LocalDate dataSaida, String descricaoProblema, double valorTotal) {
+    public OrdemDeServico(int cdOrdemDeServico, Cliente cliente, Dispositivo dispositivo, List<ItemServicoOrdem> itemServicoOrdem, Tecnico tecnico, Status status, LocalDate dataEntrada, LocalDate dataSaida, String descricaoProblema, double valorTotal) {
+        this.cdOrdemDeServico = cdOrdemDeServico;
         this.cliente = cliente;
         this.dispositivo = dispositivo;
         this.itemServicoOrdem = itemServicoOrdem;
@@ -37,6 +39,14 @@ public class OrdemDeServico {
         this.dataSaida = dataSaida;
         this.descricaoProblema = descricaoProblema;
         this.valorTotal = valorTotal;
+    }
+
+    public int getCdOrdemDeServico() {
+        return cdOrdemDeServico;
+    }
+
+    public void setCdOrdemDeServico(int cdOrdemDeServico) {
+        this.cdOrdemDeServico = cdOrdemDeServico;
     }
 
     public Cliente getCliente() {

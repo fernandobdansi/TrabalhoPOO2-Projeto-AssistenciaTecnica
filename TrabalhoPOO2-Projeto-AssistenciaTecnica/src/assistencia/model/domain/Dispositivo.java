@@ -12,10 +12,10 @@ package assistencia.model.domain;
 public class Dispositivo {
 
     private int cdDispositivo;
-    private Modelo modelo;
-    private Marca marca;
     private String numSerie;
     private String descricao;
+    private Modelo modelo;
+    private Marca marca;
     private Cliente cliente;
 
     public Dispositivo() {
