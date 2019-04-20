@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ItemServicoOrdem implements Serializable {
 
-    private int cdItemDeVenda;
+    private int cdItemServicoOrdem;
     private double valor;
     private OrdemDeServico ordemDeServico;
     private Servico servico;
@@ -12,19 +12,19 @@ public class ItemServicoOrdem implements Serializable {
     public ItemServicoOrdem() {
     }
 
-    public ItemServicoOrdem(int cdItemDeVenda, double valor, OrdemDeServico ordemDeServico, Servico servico) {
-        this.cdItemDeVenda = cdItemDeVenda;
+    public ItemServicoOrdem(int cdItemServicoOrdem, double valor, OrdemDeServico ordemDeServico, Servico servico) {
+        this.cdItemServicoOrdem = cdItemServicoOrdem;
         this.valor = valor;
         this.ordemDeServico = ordemDeServico;
         this.servico = servico;
     }
 
-    public int getCdItemDeVenda() {
-        return cdItemDeVenda;
+    public int getCdItemServicoOrdem() {
+        return cdItemServicoOrdem;
     }
 
-    public void setCdItemDeVenda(int cdItemDeVenda) {
-        this.cdItemDeVenda = cdItemDeVenda;
+    public void setCdItemServicoOrdem(int cdItemServicoOrdem) {
+        this.cdItemServicoOrdem = cdItemServicoOrdem;
     }
 
     public double getValor() {
