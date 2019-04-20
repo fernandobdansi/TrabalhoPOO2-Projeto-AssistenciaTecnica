@@ -14,6 +14,10 @@ public class Marca {
     private int cdMarca;
     private String nome;
 
+    public Marca() {
+        
+    }
+
     public int getCdMarca() {
         return cdMarca;
     }
