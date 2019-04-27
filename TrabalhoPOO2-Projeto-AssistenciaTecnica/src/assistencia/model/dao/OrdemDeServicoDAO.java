@@ -42,9 +42,9 @@ public class OrdemDeServicoDAO {
         String sql;
 
         if (ordemdeservico.getDataSaida() != null) {
-            sql = "INSERT INTO ordemdeservico(dataEntrada, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus, dataSaida) VALUES('?','?','?','?','?','?','?','?');";
+            sql = "INSERT INTO ordemdeservico(dataEntrada, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus, dataSaida) VALUES(?,?,?,?,?,?,?,?);";
         } else {
-            sql = "INSERT INTO ordemdeservico(dataEntrada, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('?','?','?','?','?','?','?');";
+            sql = "INSERT INTO ordemdeservico(dataEntrada, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES(?,?,?,?,?,?,?);";
         }
 
         try {
@@ -91,6 +91,9 @@ public class OrdemDeServicoDAO {
 
             if (ordemdeservico.getDataSaida() != null) {
                 stmt.setDate(8, Date.valueOf(ordemdeservico.getDataSaida()));
+                stmt.setInt(9, ordemdeservico.getCdOrdemDeServico());
+            } else {
+                stmt.setInt(8, ordemdeservico.getCdOrdemDeServico());
             }
 
             stmt.execute();

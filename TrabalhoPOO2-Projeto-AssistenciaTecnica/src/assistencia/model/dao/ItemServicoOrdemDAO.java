@@ -34,7 +34,7 @@ public class ItemServicoOrdemDAO {
     }
 
     public boolean inserir(ItemServicoOrdem itenservicoordem) {
-        String sql = "INSERT INTO itenservicoordem(valor, cdOrdemDeServico, cdServico) VALUES('?','?','?')";
+        String sql = "INSERT INTO itenservicoordem(valor, cdOrdemDeServico, cdServico) VALUES(?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setDouble(1, itenservicoordem.getValor());
@@ -55,6 +55,7 @@ public class ItemServicoOrdemDAO {
             stmt.setDouble(1, itenservicoordem.getValor());
             stmt.setInt(2, itenservicoordem.getOrdemDeServico().getCdOrdemDeServico());
             stmt.setInt(3, itenservicoordem.getServico().getCdServico());
+            stmt.setInt(4, itenservicoordem.getCdItemServicoOrdem());
             stmt.execute();
             return true;
         } catch (SQLException ex) {
