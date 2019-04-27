@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +24,10 @@ public class Main extends Application {
         
         Scene scene = new Scene(root);
         
+        Image image = new Image("/assistencia/resources/icon.png");
+        
+        stage.getIcons().add(image);
+        stage.setTitle("Assistência Técnica SoftWare");
         stage.setScene(scene);
         stage.show();
     }
