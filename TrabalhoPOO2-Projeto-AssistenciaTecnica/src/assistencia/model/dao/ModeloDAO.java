@@ -102,6 +102,28 @@ public class ModeloDAO {
         return retorno;
     }
 
+    public List<Modelo> listarModeloPorMarca(Marca marca) {
+        String sql = "SELECT * FROM modelo WHERE cdMarca=?";
+        List<Modelo> retorno = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, marca.getCdMarca());
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                Modelo modelo = new Modelo();
+                marca.setCdMarca(resultado.getInt("cdMarca"));
+                modelo.setCdModelo(resultado.getInt("cdModelo"));
+                modelo.setNome(resultado.getString("nome"));
+                modelo.setMarca(marca);
+
+                retorno.add(modelo);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+
     public Modelo buscar(Modelo modelo) {
         String sql = "SELECT * FROM modelo WHERE cdModelo=?";
         Modelo retorno = new Modelo();
@@ -115,7 +137,7 @@ public class ModeloDAO {
 
                 modelo.setNome(resultado.getString("nome"));
                 marca.setCdMarca(resultado.getInt("cdMarca"));
-                
+
                 modelo.setMarca(marca);
                 retorno = modelo;
             }

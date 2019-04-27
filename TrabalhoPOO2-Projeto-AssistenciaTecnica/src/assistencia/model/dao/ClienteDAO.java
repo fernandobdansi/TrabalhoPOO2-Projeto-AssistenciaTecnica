@@ -23,7 +23,7 @@ public class ClienteDAO {
     }
 
     public boolean inserir(Cliente cliente) {
-        String sql = "INSERT INTO clientes(nome, cpf, telefone) VALUES(?,?,?)";
+        String sql = "INSERT INTO cliente(nome, cpf, telefone) VALUES(?,?,?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
@@ -38,7 +38,7 @@ public class ClienteDAO {
     }
 
     public boolean alterar(Cliente cliente) {
-        String sql = "UPDATE clientes SET nome=?, cpf=?, telefone=? WHERE cdCliente=?";
+        String sql = "UPDATE cliente SET nome=?, cpf=?, telefone=? WHERE cdCliente=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
@@ -54,7 +54,7 @@ public class ClienteDAO {
     }
 
     public boolean remover(Cliente cliente) {
-        String sql = "DELETE FROM clientes WHERE cdCliente=?";
+        String sql = "DELETE FROM cliente WHERE cdCliente=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, cliente.getCdCliente());
@@ -67,7 +67,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> listar() {
-        String sql = "SELECT * FROM clientes";
+        String sql = "SELECT * FROM cliente";
         List<Cliente> retorno = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -87,7 +87,7 @@ public class ClienteDAO {
     }
 
     public Cliente buscar(Cliente cliente) {
-        String sql = "SELECT * FROM clientes WHERE cdCliente=?";
+        String sql = "SELECT * FROM cliente WHERE cdCliente=?";
         Cliente retorno = new Cliente();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);

@@ -6,10 +6,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Rafael Vargas Mesquita
- */
 public class DatabasePostgreSQL implements Database {
     private Connection connection;
 

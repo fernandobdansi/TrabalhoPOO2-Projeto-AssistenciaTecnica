@@ -35,7 +35,7 @@ public class DispositivoDAO {
     }
 
     public boolean inserir(Dispositivo dispositivo) {
-        String sql = "INSERT INTO dispositivo(numSerie, descricao, cdModelo, cdMarca, cdCliente) VALUES('?','?','?','?','?');";
+        String sql = "INSERT INTO dispositivo(numSerie, descricao, cdModelo, cdMarca, cdCliente) VALUES(?,?,?,?,?);";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, dispositivo.getNumSerie());
@@ -60,6 +60,7 @@ public class DispositivoDAO {
             stmt.setInt(3, dispositivo.getModelo().getCdModelo());
             stmt.setInt(4, dispositivo.getMarca().getCdMarca());
             stmt.setInt(5, dispositivo.getCliente().getCdCliente());
+            stmt.setInt(6, dispositivo.getCdDispositivo());
             stmt.execute();
             return true;
         } catch (SQLException ex) {

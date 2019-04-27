@@ -18,11 +18,11 @@ public class Tecnico implements Serializable {
         this.cpf = cpf;
     }
 
-    public int getcdTecnico() {
+    public int getCdTecnico() {
         return cdTecnico;
     }
 
-    public void setcdTecnico(int cdTecnico) {
+    public void setCdTecnico(int cdTecnico) {
         this.cdTecnico = cdTecnico;
     }
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="695.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="assistencia.controller.FXMLAnchorPaneCadastrosDispositivosController">
+    <children>
+        <SplitPane dividerPositions="0.5277463193657984" layoutX="109.0" layoutY="56.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <TableView fx:id="tableViewDispositivo" layoutY="14.0" prefHeight="398.0" prefWidth="237.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn fx:id="tableColumnDispositivoClienteNome" minWidth="6.0" prefWidth="265.0" text="Cliente" />
+                                <TableColumn fx:id="tableColumnDispositivoNumSerie" prefWidth="270.0" text="N. Série Dispositivo" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="502.0">
+                    <children>
+                        <Label layoutX="118.0" layoutY="74.0" text="Detalhes do Dispositivo">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <GridPane layoutX="47.0" layoutY="90.0" prefHeight="283.0" prefWidth="284.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="58.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.0" minWidth="10.0" prefWidth="91.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints vgrow="SOMETIMES" />
+                                <RowConstraints vgrow="SOMETIMES" />
+                                <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                                <RowConstraints vgrow="SOMETIMES" />
+                        <RowConstraints vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Cliente:" GridPane.rowIndex="1" />
+                                <Label prefHeight="17.0" prefWidth="48.0" text="N. Série:" GridPane.rowIndex="2" />
+                                <Label fx:id="labelDispositivoClienteNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="labelDispositivoNumSerie" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label text="Marca:" GridPane.rowIndex="4" />
+                                <Label fx:id="labelDispositivoMarca" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <Label text="Código:" />
+                                <Label fx:id="labelDispositivoCodigo" GridPane.columnIndex="1" />
+                        <Label text="Modelo:" GridPane.rowIndex="3" />
+                        <Label fx:id="labelDispositivoModelo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label prefHeight="17.0" prefWidth="60.0" text="Descrição:" GridPane.rowIndex="5" />
+                        <Label fx:id="labelDispositivoDescricao" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            </children>
+                        </GridPane>
+                        <Group layoutX="6.0" layoutY="-25.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                            <children>
+                                <Button fx:id="buttonAlterar" layoutX="205.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleButtonAlterar" prefHeight="25.0" prefWidth="65.0" text="Alterar" />
+                                <Button fx:id="buttonInserir" layoutX="132.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleButtonInserir" prefHeight="25.0" prefWidth="65.0" text="Inserir" />
+                                <Button fx:id="buttonRemover" layoutX="276.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleButtonRemover" prefHeight="25.0" prefWidth="65.0" text="Remover" />
+                            </children>
+                        </Group>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

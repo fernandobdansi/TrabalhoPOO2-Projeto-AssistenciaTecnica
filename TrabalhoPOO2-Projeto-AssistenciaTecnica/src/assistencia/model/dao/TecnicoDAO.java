@@ -53,7 +53,7 @@ public class TecnicoDAO {
             stmt.setString(1, tecnico.getNome());
             stmt.setString(2, tecnico.getCpf());
             stmt.setString(3, tecnico.getTelefone());
-            stmt.setInt(4, tecnico.getcdTecnico());
+            stmt.setInt(4, tecnico.getCdTecnico());
             stmt.execute();
             return true;
         } catch (SQLException ex) {
@@ -66,7 +66,7 @@ public class TecnicoDAO {
         String sql = "DELETE FROM tecnico WHERE cdTecnico=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, tecnico.getcdTecnico());
+            stmt.setInt(1, tecnico.getCdTecnico());
             stmt.execute();
             return true;
         } catch (SQLException ex) {
@@ -83,7 +83,7 @@ public class TecnicoDAO {
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
                 Tecnico tecnico = new Tecnico();
-                tecnico.setcdTecnico(resultado.getInt("cdTecnico"));
+                tecnico.setCdTecnico(resultado.getInt("cdTecnico"));
                 tecnico.setNome(resultado.getString("nome"));
                 tecnico.setCpf(resultado.getString("cpf"));
                 tecnico.setTelefone(resultado.getString("telefone"));
@@ -100,7 +100,7 @@ public class TecnicoDAO {
         Tecnico retorno = new Tecnico();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, tecnico.getcdTecnico());
+            stmt.setInt(1, tecnico.getCdTecnico());
             ResultSet resultado = stmt.executeQuery();
             if (resultado.next()) {
                 tecnico.setNome(resultado.getString("nome"));

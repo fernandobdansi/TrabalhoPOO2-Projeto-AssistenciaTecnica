@@ -53,7 +53,7 @@ public class OrdemDeServicoDAO {
             stmt.setString(2, ordemdeservico.getDescricaoProblema());
             stmt.setDouble(3, ordemdeservico.getValorTotal());
             stmt.setInt(4, ordemdeservico.getCliente().getCdCliente());
-            stmt.setInt(5, ordemdeservico.getTecnico().getcdTecnico());
+            stmt.setInt(5, ordemdeservico.getTecnico().getCdTecnico());
             stmt.setInt(6, ordemdeservico.getDispositivo().getCdDispositivo());
             stmt.setInt(7, ordemdeservico.getStatus().getCdStatus());
 
@@ -85,7 +85,7 @@ public class OrdemDeServicoDAO {
             stmt.setString(2, ordemdeservico.getDescricaoProblema());
             stmt.setDouble(3, ordemdeservico.getValorTotal());
             stmt.setInt(4, ordemdeservico.getCliente().getCdCliente());
-            stmt.setInt(5, ordemdeservico.getTecnico().getcdTecnico());
+            stmt.setInt(5, ordemdeservico.getTecnico().getCdTecnico());
             stmt.setInt(6, ordemdeservico.getDispositivo().getCdDispositivo());
             stmt.setInt(7, ordemdeservico.getStatus().getCdStatus());
 
@@ -134,7 +134,7 @@ public class OrdemDeServicoDAO {
                 ordemdeservico.setValorTotal(resultado.getDouble("valorTotal"));
                 ordemdeservico.setDescricaoProblema(resultado.getString("descricaoProblema"));
                 cliente.setCdCliente(resultado.getInt("cdCliente"));
-                tecnico.setcdTecnico(resultado.getInt("cdTecnico"));
+                tecnico.setCdTecnico(resultado.getInt("cdTecnico"));
                 status.setCdStatus(resultado.getInt("cdStatus"));
                 dispositivo.setCdDispositivo(resultado.getInt("cdDispositivo"));
 
@@ -188,7 +188,7 @@ public class OrdemDeServicoDAO {
                 ordemdeservico.setDataEntrada(resultado.getDate("dataSaida").toLocalDate());
                 ordemdeservico.setValorTotal(resultado.getDouble("valorTotal"));
                 cliente.setCdCliente(resultado.getInt("cdCliente"));
-                tecnico.setcdTecnico(resultado.getInt("cdTecnico"));
+                tecnico.setCdTecnico(resultado.getInt("cdTecnico"));
                 status.setCdStatus(resultado.getInt("cdStatus"));
                 dispositivo.setCdDispositivo(resultado.getInt("cdDispositivo"));
                 ordemdeservico.setCliente(cliente);
