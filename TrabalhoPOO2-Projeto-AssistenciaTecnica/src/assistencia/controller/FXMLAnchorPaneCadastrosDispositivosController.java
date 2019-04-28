@@ -30,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.postgresql.util.PSQLException;
 
 /**
  * FXML Controller class
@@ -117,12 +118,19 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
     @FXML
     private void handleButtonRemover() throws IOException {
         Dispositivo dispositivo = tableViewDispositivo.getSelectionModel().getSelectedItem();
+        Boolean ret = true;
         if (dispositivo != null) {
-            dispositivoDAO.remover(dispositivo);
+            ret = dispositivoDAO.remover(dispositivo);
             carregarTableViewDispositivo();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Por favor, escolha um Dispositivo na Tabela!");
+            alert.setContentText("Erro ao Remover! Selecione um Dispositivo");
+            alert.show();
+        }
+        if (ret) {
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Erro ao Remover! Verifique se não há Dependências em Outras Tabelas!");
             alert.show();
         }
     }

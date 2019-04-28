@@ -17,19 +17,21 @@ import javafx.stage.Stage;
  * @author Fernando
  */
 public class Main extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("view/FXMLMain.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+
         Image image = new Image("/assistencia/resources/icon.png");
-        
+
         stage.getIcons().add(image);
         stage.setTitle("Assistência Técnica SoftWare");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+
     }
 
     /**
@@ -38,5 +40,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
