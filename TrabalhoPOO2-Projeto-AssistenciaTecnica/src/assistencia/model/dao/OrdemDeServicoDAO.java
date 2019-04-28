@@ -16,6 +16,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -133,7 +134,13 @@ public class OrdemDeServicoDAO {
 
                 ordemdeservico.setCdOrdemDeServico(resultado.getInt("cdOrdemDeServico"));
                 ordemdeservico.setDataEntrada(resultado.getDate("dataEntrada").toLocalDate());
-                ordemdeservico.setDataSaida(resultado.getDate("dataSaida").toLocalDate());
+
+                if (resultado.getDate("dataSaida") == null) {
+                    ordemdeservico.setDataSaida(LocalDate.of(1000, 1, 1));
+                } else {
+                    ordemdeservico.setDataSaida(resultado.getDate("dataSaida").toLocalDate());
+                }
+
                 ordemdeservico.setValorTotal(resultado.getDouble("valorTotal"));
                 ordemdeservico.setDescricaoProblema(resultado.getString("descricaoProblema"));
                 cliente.setCdCliente(resultado.getInt("cdCliente"));
@@ -164,6 +171,10 @@ public class OrdemDeServicoDAO {
                 itemServicoOrdem = itemServicoOrdemDAO.listarPorOrdemDeServico(ordemdeservico);
 
                 ordemdeservico.setCliente(cliente);
+                ordemdeservico.setDispositivo(dispositivo);
+                ordemdeservico.setStatus(status);
+                ordemdeservico.setTecnico(tecnico);
+
                 ordemdeservico.setItemServicoOrdem(itemServicoOrdem);
                 retorno.add(ordemdeservico);
             }
@@ -188,7 +199,11 @@ public class OrdemDeServicoDAO {
 
                 ordemdeservico.setCdOrdemDeServico(resultado.getInt("cdOrdemDeServico"));
                 ordemdeservico.setDataEntrada(resultado.getDate("dataEntrada").toLocalDate());
-                ordemdeservico.setDataEntrada(resultado.getDate("dataSaida").toLocalDate());
+                if (resultado.getDate("dataSaida") == null) {
+                    ordemdeservico.setDataSaida(LocalDate.of(1000, 1, 1));
+                } else {
+                    ordemdeservico.setDataSaida(resultado.getDate("dataSaida").toLocalDate());
+                }
                 ordemdeservico.setValorTotal(resultado.getDouble("valorTotal"));
                 cliente.setCdCliente(resultado.getInt("cdCliente"));
                 tecnico.setCdTecnico(resultado.getInt("cdTecnico"));

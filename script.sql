@@ -194,9 +194,9 @@ INSERT INTO ordemdeservico(dataEntrada, descricaoProblema, valorTotal, cdCliente
 INSERT INTO ordemdeservico(dataEntrada, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('12/04/2019','Bateria Ruim/Tela Arranhada','230.00','6','6','6','2');
 
 -- Inserts Ordem de Servico Finalizada - Com data de Saida
-INSERT INTO ordemdeservico(dataEntrada, dataSaida, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('05/04/2019','10/04/2019','Tela Quebrada/Bateria Fraca','280.00','7','7','7','3');
-INSERT INTO ordemdeservico(dataEntrada, dataSaida, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('04/02/2019','12/02/2019','Tela Quebrada/Bateria Ruim/Falante Ruim','500.00','8','8','8','3');
-INSERT INTO ordemdeservico(dataEntrada, dataSaida, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('03/03/2019','11/03/2019','Tela Arranhada','120.00','9','9','9','3');
+INSERT INTO ordemdeservico(dataEntrada, dataSaida, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('05/04/2019','10/04/2019','Tela Quebrada/Bateria Fraca','280.00','7','7','7','4');
+INSERT INTO ordemdeservico(dataEntrada, dataSaida, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('04/02/2019','12/02/2019','Tela Quebrada/Bateria Ruim/Falante Ruim','500.00','8','8','8','4');
+INSERT INTO ordemdeservico(dataEntrada, dataSaida, descricaoProblema, valorTotal, cdCliente, cdTecnico, cdDispositivo, cdStatus) VALUES('03/03/2019','11/03/2019','Tela Arranhada','120.00','9','9','9','4');
 
 
 INSERT INTO itenservicoordem(valor, cdOrdemDeServico, cdServico) VALUES('200.00','1','1');

@@ -80,7 +80,7 @@ public class Dispositivo {
 
     @Override
     public String toString() {
-        return this.numSerie + "-" + this.cliente;
+        return this.numSerie;
     }
 
 }

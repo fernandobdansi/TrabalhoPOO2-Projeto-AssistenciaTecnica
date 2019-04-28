@@ -28,7 +28,7 @@ public class Main extends Application {
 
         stage.getIcons().add(image);
         stage.setTitle("Assistência Técnica SoftWare");
-        stage.setResizable(false);
+        //stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 
