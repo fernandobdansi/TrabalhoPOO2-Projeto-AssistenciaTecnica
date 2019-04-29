@@ -1,11 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLAnchorPaneProcessosOrdemDeServicoDialogController">
-    
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLAnchorPaneProcessosOrdemDeServicoDialogController">
+    <children>
+        <GridPane layoutX="300.0" layoutY="255.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="345.0" minWidth="10.0" prefWidth="183.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="518.0" minWidth="10.0" prefWidth="517.0" />
+            </columnConstraints>
+            <rowConstraints>
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="33.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="97.0" minHeight="0.0" prefHeight="18.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="249.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="261.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="267.0" minHeight="6.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="353.0" minHeight="10.0" prefHeight="353.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+         <children>
+            <Label text="Data de Entrada:" />
+            <Label text="Data de Saida:" GridPane.rowIndex="1" />
+            <Label text="Cliente:" GridPane.rowIndex="2" />
+            <Label text="Dispositivo:" GridPane.rowIndex="3" />
+            <Label text="Tecnico:" GridPane.rowIndex="4" />
+            <Label text="Descrição Do Problema:" GridPane.rowIndex="5" />
+            <Label text="Status:" GridPane.rowIndex="6" />
+            <ComboBox fx:id="comboBoxOrdemCliente" onAction="#carregarComboBoxDispositivo" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="comboBoxOrdemDispositivo" prefHeight="25.0" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="comboBoxOrdemTecnico" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="comboBoxOrdemStatus" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <DatePicker fx:id="datePickerOrdemEntrada" GridPane.columnIndex="1" />
+            <DatePicker fx:id="datePickerOrdemSaida" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldOrdemProblema" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Serviços:" GridPane.rowIndex="7" />
+            <Label text="Serviços Realizados:" GridPane.rowIndex="8" />
+            <Label text="Valor Total" GridPane.rowIndex="9" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <children>
+                  <ComboBox fx:id="comboBoxOrdemServicos" prefHeight="25.0" prefWidth="276.0">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Label prefHeight="27.0" prefWidth="31.0" text="Valor:" />
+                  <TextField fx:id="textFieldOrdemValorServico">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="buttonAddServico" mnemonicParsing="false" prefWidth="25.0" text="+" />
+                  <Button fx:id="buttonRemServico" mnemonicParsing="false" prefWidth="25.0" text="-" />
+               </children>
+            </HBox>
+            <TableView fx:id="tableViewServicosRealizados" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+              <columns>
+                <TableColumn fx:id="tableColumnServico" prefWidth="392.0" text="Serviço" />
+                <TableColumn fx:id="tableColumnValor" minWidth="5.0" prefWidth="124.0" text="Valor" />
+              </columns>
+            </TableView>
+            <TextField fx:id="textFieldOrdemValorTotal" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+         </children>
+        </GridPane>
+      
+        <Group AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="337.0" AnchorPane.rightAnchor="50.0">
+            <children>
+                <Button fx:id="buttonConfirmar" layoutX="361.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleButtonConfirmar" prefHeight="50.0" prefWidth="200.0" text="Confirmar">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="buttonCancelar" layoutX="574.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleButtonCancelar" prefHeight="50.0" prefWidth="200.0" text="Cancelar">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Button>
+            </children>
+        </Group>
+      <Label layoutX="300.0" layoutY="31.0" text="Ordem de Serviço" AnchorPane.bottomAnchor="734.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="299.0" AnchorPane.topAnchor="31.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+    </children>
 </AnchorPane>

@@ -128,6 +128,50 @@ public class DispositivoDAO {
         return retorno;
     }
 
+    public List<Dispositivo> listarPorCliente(Cliente cliente) {
+        String sql = "SELECT * FROM dispositivo WHERE cdCliente=?";
+        List<Dispositivo> retorno = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, cliente.getCdCliente());
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                Dispositivo dispositivo = new Dispositivo();
+                Marca marca = new Marca();
+                Modelo modelo = new Modelo();
+
+                dispositivo.setCdDispositivo(resultado.getInt("cdDispositivo"));
+                dispositivo.setDescricao(resultado.getString("descricao"));
+                dispositivo.setNumSerie(resultado.getString("numSerie"));
+                cliente.setCdCliente(resultado.getInt("cdCliente"));
+                marca.setCdMarca(resultado.getInt("cdMarca"));
+                modelo.setCdModelo(resultado.getInt("cdModelo"));
+
+                //Obtendo os dados completos do Cliente associado à Dispositivo
+
+
+                //Obtendo os dados completos do Marca associado à Dispositivo
+                MarcaDAO marcaDAO = new MarcaDAO();
+                marcaDAO.setConnection(connection);
+                marca = marcaDAO.buscar(marca);
+
+                //Obtendo os dados completos do Modelo associado à Dispositivo
+                ModeloDAO modeloDAO = new ModeloDAO();
+                modeloDAO.setConnection(connection);
+                modelo = modeloDAO.buscar(modelo);
+
+                dispositivo.setCliente(cliente);
+                dispositivo.setMarca(marca);
+                dispositivo.setModelo(modelo);
+
+                retorno.add(dispositivo);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DispositivoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+
     public Dispositivo buscar(Dispositivo dispositivo) {
         String sql = "SELECT * FROM dispositivo WHERE cdDispositivo=?";
         Dispositivo retorno = new Dispositivo();

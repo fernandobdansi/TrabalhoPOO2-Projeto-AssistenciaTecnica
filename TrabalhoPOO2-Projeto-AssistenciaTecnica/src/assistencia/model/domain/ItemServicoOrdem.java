@@ -2,7 +2,7 @@ package assistencia.model.domain;
 
 import java.io.Serializable;
 
-public class ItemServicoOrdem implements Serializable {
+public class ItemServicoOrdem {
 
     private int cdItemServicoOrdem;
     private double valor;
