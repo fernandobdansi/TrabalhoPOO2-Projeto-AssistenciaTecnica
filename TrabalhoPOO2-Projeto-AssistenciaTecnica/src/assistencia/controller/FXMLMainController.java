@@ -8,6 +8,8 @@ package assistencia.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +45,14 @@ public class FXMLMainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        AnchorPane a;
+        try {
+            a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLMenuPrincipal.fxml"));
+            anchorPane.getChildren().setAll(a);
+
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -55,6 +64,12 @@ public class FXMLMainController implements Initializable {
     @FXML
     private void handleMenuItemProcessosOrdemDeServico(ActionEvent event) throws IOException {
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneProcessosOrdemDeServico.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+
+    @FXML
+    private void handleMenuItemHome(ActionEvent event) throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLMenuPrincipal.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 

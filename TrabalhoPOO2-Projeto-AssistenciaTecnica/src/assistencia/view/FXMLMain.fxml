@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLMainController">
    <children>
       <MenuBar>
         <menus>
+            <Menu mnemonicParsing="false" onAction="#handleMenuItemHome" text="Home">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemHome" text="Tela Inicial" />
+               </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Cadastros">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleMenuItemCadastrosDispositivo" text="Dispositivo" />
@@ -35,6 +49,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane fx:id="anchorPane" />
+      <AnchorPane fx:id="anchorPane" prefHeight="0.0" prefWidth="1024.0" />
    </children>
 </VBox>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="695.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLMenuPrincipalController">
+   <children>
+      <ImageView fitHeight="630.0" fitWidth="743.0" layoutX="198.0" layoutY="33.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="196.0" AnchorPane.topAnchor="33.0">
+         <image>
+            <Image url="@../resources/icon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="374.0" layoutY="75.0" text="Seja Bem Vindo!" AnchorPane.bottomAnchor="567.0" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="75.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="421.0" layoutY="209.0" prefHeight="35.0" prefWidth="183.0" text="Atalhos Abaixo:" AnchorPane.bottomAnchor="451.0" AnchorPane.leftAnchor="421.0" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="209.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Group layoutX="255.0" layoutY="282.0" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="282.0">
+         <children>
+            <Button fx:id="buttonAtalhoDispositivos" mnemonicParsing="false" onAction="#handleMenuItemCadastrosDispositivo" prefHeight="100.0" prefWidth="200.0" text="Dispositivos" />
+            <Button fx:id="buttonAtalhoOrdemDeServico" layoutX="316.0" mnemonicParsing="false" onAction="#handleMenuItemProcessosOrdemDeServico" prefHeight="100.0" prefWidth="200.0" text="Ordem de Serviços" />
+            <Button fx:id="buttonAtalhoGrafico" layoutY="120.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Gráfico" />
+            <Button fx:id="buttonAtalhoRelatorio" layoutX="316.0" layoutY="120.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Relatórios" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

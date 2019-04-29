@@ -149,7 +149,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
         datePickerOrdemEntrada.setValue(ordemDeServico.getDataEntrada());
         LocalDate localDate = LocalDate.of(1000, 1, 1);
         if (ordemDeServico.getDataSaida().isEqual(localDate)) {
-            
+
         } else {
             datePickerOrdemSaida.setValue(ordemDeServico.getDataSaida());
         }
@@ -193,23 +193,39 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
         if (comboBoxOrdemServicos.getSelectionModel().getSelectedItem() != null) {
             servico = (Servico) comboBoxOrdemServicos.getSelectionModel().getSelectedItem();
 
-            if (Integer.parseInt(textFieldOrdemValorServico.getText()) >= valor) {
-                itemServicoOrdem.setServico((Servico) comboBoxOrdemServicos.getSelectionModel().getSelectedItem());
-                itemServicoOrdem.setValor(Double.parseDouble((textFieldOrdemValorServico.getText())));
-
-                ordemDeServico.getItemServicoOrdem().add(itemServicoOrdem);
-                ordemDeServico.setValorTotal(ordemDeServico.getValorTotal() + itemServicoOrdem.getValor());
-
-                observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
-                tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
-
-                textFieldOrdemValorTotal.setText(String.format("%.2f", ordemDeServico.getValorTotal()));
-            } else {
+            if (textFieldOrdemValorServico.getText().equals("") || textFieldOrdemValorServico.getText().matches("[a-zA-Z\\s!\"#$%&'()*+,-./:;?@_`{|}~]+")) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Problemas na escolha de Serviço!");
-                alert.setContentText("O preço minimo de cada serviço e R$10,00!");
+                alert.setHeaderText("Problemas no Valor do Serviço!");
+                alert.setContentText("O valor e invalido!");
                 alert.show();
+
+            } else {
+                if (Integer.parseInt(textFieldOrdemValorServico.getText()) >= valor) {
+                    itemServicoOrdem.setServico((Servico) comboBoxOrdemServicos.getSelectionModel().getSelectedItem());
+
+                    itemServicoOrdem.setValor(Double.parseDouble((textFieldOrdemValorServico.getText())));
+
+                    ordemDeServico.getItemServicoOrdem().add(itemServicoOrdem);
+                    ordemDeServico.setValorTotal(ordemDeServico.getValorTotal() + itemServicoOrdem.getValor());
+
+                    observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
+                    tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
+
+                    textFieldOrdemValorTotal.setText(String.format("%.2f", ordemDeServico.getValorTotal()));
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText("Problemas na escolha de Serviço!");
+                    alert.setContentText("O preço minimo de cada serviço e R$10,00!");
+                    alert.show();
+                }
+
             }
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Problemas na escolha de Serviço!");
+            alert.setContentText("Selecione um serviço!");
+            alert.show();
         }
     }
 
@@ -221,7 +237,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
             itemServicoOrdem = (ItemServicoOrdem) tableViewServicosRealizados.getSelectionModel().getSelectedItem();
 
             ordemDeServico.getItemServicoOrdem().remove(itemServicoOrdem);
-            ordemDeServico.setValorTotal(ordemDeServico.getValorTotal()- itemServicoOrdem.getValor());
+            ordemDeServico.setValorTotal(ordemDeServico.getValorTotal() - itemServicoOrdem.getValor());
 
             observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
             tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
@@ -272,36 +288,39 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
     }
 
     private boolean validarEntradaDeDados() {
-        return true;
-        /*String errorMessage = "";
+        String errorMessage = "";
 
-         if (textFieldDispositivoDescricao.getText() == null || textFieldDispositivoDescricao.getText().length() == 0) {
-         errorMessage += "Descrição inválida!\n";
-         }
-         if (textFieldDispositivoNumSerie.getText() == null || textFieldDispositivoNumSerie.getText().length() == 0) {
-         errorMessage += "Numero de Série inválido!\n";
-         }
-         if (comboBoxDispositivoCliente.getSelectionModel().getSelectedItem() == null) {
-         errorMessage += "Cliente inválido!\n";
-         }
-         if (comboBoxDispositivoMarca.getSelectionModel().getSelectedItem() == null) {
-         errorMessage += "Marca inválido!\n";
-         }
-         if (comboBoxDispositivoModelo.getSelectionModel().getSelectedItem() == null) {
-         errorMessage += "Modelo inválido!\n";
-         }
+        if (textFieldOrdemProblema.getText() == null || textFieldOrdemProblema.getText().length() == 0) {
+            errorMessage += "Descrição inválida!\n";
+        }
 
-         if (errorMessage.length() == 0) {
-         return true;
-         } else {
-         // Mostrando a mensagem de erro
-         Alert alert = new Alert(Alert.AlertType.ERROR);
-         alert.setTitle("Erro no cadastro");
-         alert.setHeaderText("Campos inválidos, por favor, corrija...");
-         alert.setContentText(errorMessage);
-         alert.show();
-         return false;
-         }*/
+        if (comboBoxOrdemCliente.getSelectionModel().getSelectedItem() == null) {
+            errorMessage += "Cliente inválido!\n";
+        }
+        if (comboBoxOrdemDispositivo.getSelectionModel().getSelectedItem() == null) {
+            errorMessage += "Dispositivo inválido!\n";
+        }
+        if (comboBoxOrdemStatus.getSelectionModel().getSelectedItem() == null) {
+            errorMessage += "Status inválido!\n";
+        }
+        if (comboBoxOrdemTecnico.getSelectionModel().getSelectedItem() == null) {
+            errorMessage += "Técnico inválido!\n";
+        }
+        if (datePickerOrdemEntrada.getValue() == null) {
+            errorMessage += "Data de Entrada e Obrigatória\n";
+        }
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Mostrando a mensagem de erro
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro no cadastro");
+            alert.setHeaderText("Campos inválidos, por favor, corrija...");
+            alert.setContentText(errorMessage);
+            alert.show();
+            return false;
+        }
     }
 
 }
