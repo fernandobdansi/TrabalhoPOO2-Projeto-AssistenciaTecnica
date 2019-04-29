@@ -29,6 +29,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -148,8 +149,9 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
         datePickerOrdemEntrada.setValue(ordemDeServico.getDataEntrada());
         LocalDate localDate = LocalDate.of(1000, 1, 1);
         if (ordemDeServico.getDataSaida().isEqual(localDate)) {
+            
         } else {
-            datePickerOrdemEntrada.setValue(ordemDeServico.getDataSaida());
+            datePickerOrdemSaida.setValue(ordemDeServico.getDataSaida());
         }
         comboBoxOrdemDispositivo.getSelectionModel().select(ordemDeServico.getDispositivo());
         comboBoxOrdemStatus.getSelectionModel().select(ordemDeServico.getStatus());
@@ -167,9 +169,70 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
     }
 
     public void handleButtonConfirmar() {
+        if (validarEntradaDeDados()) {
+            ordemDeServico.setCliente((Cliente) comboBoxOrdemCliente.getSelectionModel().getSelectedItem());
+            ordemDeServico.setDataEntrada(datePickerOrdemEntrada.getValue());
+            ordemDeServico.setDataSaida(datePickerOrdemSaida.getValue());
+            ordemDeServico.setDispositivo((Dispositivo) comboBoxOrdemDispositivo.getSelectionModel().getSelectedItem());
+            ordemDeServico.setStatus((Status) comboBoxOrdemStatus.getSelectionModel().getSelectedItem());
+            ordemDeServico.setTecnico((Tecnico) comboBoxOrdemTecnico.getSelectionModel().getSelectedItem());
+            ordemDeServico.setDescricaoProblema(textFieldOrdemProblema.getText());
 
-        buttonConfirmarClicked = true;
-        dialogStage.close();
+            buttonConfirmarClicked = true;
+            dialogStage.close();
+        }
+
+    }
+
+    @FXML
+    public void handleButtonAdicionar() {
+        Servico servico;
+        ItemServicoOrdem itemServicoOrdem = new ItemServicoOrdem();
+        float valor = 10;
+
+        if (comboBoxOrdemServicos.getSelectionModel().getSelectedItem() != null) {
+            servico = (Servico) comboBoxOrdemServicos.getSelectionModel().getSelectedItem();
+
+            if (Integer.parseInt(textFieldOrdemValorServico.getText()) >= valor) {
+                itemServicoOrdem.setServico((Servico) comboBoxOrdemServicos.getSelectionModel().getSelectedItem());
+                itemServicoOrdem.setValor(Double.parseDouble((textFieldOrdemValorServico.getText())));
+
+                ordemDeServico.getItemServicoOrdem().add(itemServicoOrdem);
+                ordemDeServico.setValorTotal(ordemDeServico.getValorTotal() + itemServicoOrdem.getValor());
+
+                observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
+                tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
+
+                textFieldOrdemValorTotal.setText(String.format("%.2f", ordemDeServico.getValorTotal()));
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Problemas na escolha de Serviço!");
+                alert.setContentText("O preço minimo de cada serviço e R$10,00!");
+                alert.show();
+            }
+        }
+    }
+
+    @FXML
+    public void handleButtonRemover() {
+        ItemServicoOrdem itemServicoOrdem = new ItemServicoOrdem();
+
+        if (tableViewServicosRealizados.getSelectionModel().getSelectedItem() != null) {
+            itemServicoOrdem = (ItemServicoOrdem) tableViewServicosRealizados.getSelectionModel().getSelectedItem();
+
+            ordemDeServico.getItemServicoOrdem().remove(itemServicoOrdem);
+            ordemDeServico.setValorTotal(ordemDeServico.getValorTotal()- itemServicoOrdem.getValor());
+
+            observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
+            tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
+
+            textFieldOrdemValorTotal.setText(String.format("%.2f", ordemDeServico.getValorTotal()));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Problemas na escolha do Serviço Realizado");
+            alert.setContentText("Você não selecionou um Serviço Realizado na tabela!");
+            alert.show();
+        }
 
     }
 
@@ -206,6 +269,39 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
         listServicos = servicoDAO.listar();
         observableListServicos = FXCollections.observableArrayList(listServicos);
         comboBoxOrdemServicos.setItems(observableListServicos);
+    }
+
+    private boolean validarEntradaDeDados() {
+        return true;
+        /*String errorMessage = "";
+
+         if (textFieldDispositivoDescricao.getText() == null || textFieldDispositivoDescricao.getText().length() == 0) {
+         errorMessage += "Descrição inválida!\n";
+         }
+         if (textFieldDispositivoNumSerie.getText() == null || textFieldDispositivoNumSerie.getText().length() == 0) {
+         errorMessage += "Numero de Série inválido!\n";
+         }
+         if (comboBoxDispositivoCliente.getSelectionModel().getSelectedItem() == null) {
+         errorMessage += "Cliente inválido!\n";
+         }
+         if (comboBoxDispositivoMarca.getSelectionModel().getSelectedItem() == null) {
+         errorMessage += "Marca inválido!\n";
+         }
+         if (comboBoxDispositivoModelo.getSelectionModel().getSelectedItem() == null) {
+         errorMessage += "Modelo inválido!\n";
+         }
+
+         if (errorMessage.length() == 0) {
+         return true;
+         } else {
+         // Mostrando a mensagem de erro
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Erro no cadastro");
+         alert.setHeaderText("Campos inválidos, por favor, corrija...");
+         alert.setContentText(errorMessage);
+         alert.show();
+         return false;
+         }*/
     }
 
 }

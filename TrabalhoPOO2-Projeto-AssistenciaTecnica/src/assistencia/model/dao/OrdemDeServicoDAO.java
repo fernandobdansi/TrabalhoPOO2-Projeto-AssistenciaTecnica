@@ -221,4 +221,21 @@ public class OrdemDeServicoDAO {
         return retorno;
     }
 
+    public OrdemDeServico buscarUltimaOrdem() {
+        String sql = "SELECT max(cdOrdemDeServico) FROM ordemdeservico";
+        OrdemDeServico retorno = new OrdemDeServico();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                retorno.setCdOrdemDeServico(resultado.getInt("max"));
+                return retorno;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrdemDeServicoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+
 }

@@ -5,7 +5,9 @@
  */
 package assistencia.controller;
 
+import assistencia.model.dao.ItemServicoOrdemDAO;
 import assistencia.model.dao.OrdemDeServicoDAO;
+import assistencia.model.dao.ServicoDAO;
 import assistencia.model.database.Database;
 import assistencia.model.database.DatabaseFactory;
 import assistencia.model.domain.ItemServicoOrdem;
@@ -27,6 +29,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -82,6 +85,8 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
     private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
     private final OrdemDeServicoDAO ordemDeServicoDAO = new OrdemDeServicoDAO();
+    private final ItemServicoOrdemDAO itemServicoOrdemDAO = new ItemServicoOrdemDAO();
+    private final ServicoDAO servicoDAO = new ServicoDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -145,6 +150,92 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
         ordemDeServico.setItemServicoOrdem(listItemServicoOrdems);
         ordemDeServico.setDataSaida(LocalDate.of(1000, 1, 1));
         boolean buttonConfirmarClicked = showFXMLAnchorPaneProcessosOrdemDeServicoDialog(ordemDeServico);
+        if (buttonConfirmarClicked) {
+            try {
+                connection.setAutoCommit(false);
+                ordemDeServicoDAO.setConnection(connection);
+                ordemDeServicoDAO.inserir(ordemDeServico);
+                itemServicoOrdemDAO.setConnection(connection);
+                servicoDAO.setConnection(connection);
+                for (ItemServicoOrdem listItemServicoOrdemss : ordemDeServico.getItemServicoOrdem()) {
+                    listItemServicoOrdemss.setOrdemDeServico(ordemDeServicoDAO.buscarUltimaOrdem());
+                    itemServicoOrdemDAO.inserir(listItemServicoOrdemss);
+                }
+                connection.commit();
+                carregarTableViewOrdemDeServico();
+            } catch (SQLException ex) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex1) {
+                    Logger.getLogger(FXMLAnchorPaneProcessosOrdemDeServicoController.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+                Logger.getLogger(FXMLAnchorPaneProcessosOrdemDeServicoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    @FXML
+    public void handleButtonRemover() throws IOException, SQLException {
+        OrdemDeServico ordemDeServico = tableViewOrdemDeServico.getSelectionModel().getSelectedItem();
+        if (ordemDeServico != null) {
+            connection.setAutoCommit(false);
+            ordemDeServicoDAO.setConnection(connection);
+            itemServicoOrdemDAO.setConnection(connection);
+            for (ItemServicoOrdem itemServicoOrdem : ordemDeServico.getItemServicoOrdem()) {
+                itemServicoOrdemDAO.remover(itemServicoOrdem);
+            }
+            ordemDeServicoDAO.remover(ordemDeServico);
+            connection.commit();
+            carregarTableViewOrdemDeServico();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Por favor, escolha uma Ordem de Servico na Tabela!");
+            alert.show();
+        }
+    }
+
+    @FXML
+    public void handleButtonAlterar() throws IOException {
+        OrdemDeServico ordemDeServico = tableViewOrdemDeServico.getSelectionModel().getSelectedItem();
+        if (ordemDeServico != null) {
+            boolean buttonConfirmarClicked = showFXMLAnchorPaneProcessosOrdemDeServicoDialog(ordemDeServico);
+            if (buttonConfirmarClicked) {
+                try {
+                    connection.setAutoCommit(false);
+                    ordemDeServicoDAO.setConnection(connection);
+                    itemServicoOrdemDAO.setConnection(connection);
+                    servicoDAO.setConnection(connection);
+
+                    // Alterar a venda devido a alteração do valor
+                    ordemDeServicoDAO.alterar(ordemDeServico);
+
+                    //Remover todos os itens de venda anteriormente associados a venda em questão
+                    List<ItemServicoOrdem> listItensItemServicoOrdemsRemover = itemServicoOrdemDAO.listarPorOrdemDeServico(ordemDeServico);
+                    for (ItemServicoOrdem itemServicoOrdemRemover : listItensItemServicoOrdemsRemover) {
+                        itemServicoOrdemDAO.remover(itemServicoOrdemRemover);
+                    }
+
+                    //Inserindo os itens de venda atualizados da venda em questão                    
+                    for (ItemServicoOrdem itemServicoOrdemAdicionar : ordemDeServico.getItemServicoOrdem()) {
+                        itemServicoOrdemAdicionar.setOrdemDeServico(ordemDeServico);
+                        itemServicoOrdemDAO.inserir(itemServicoOrdemAdicionar);
+                    }
+                    connection.commit();
+                    carregarTableViewOrdemDeServico();
+                } catch (SQLException ex) {
+                    try {
+                        connection.rollback();
+                    } catch (SQLException ex1) {
+                        Logger.getLogger(FXMLAnchorPaneProcessosOrdemDeServicoController.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                    Logger.getLogger(FXMLAnchorPaneProcessosOrdemDeServicoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Por favor, escolha uma Ordem de Servico na Tabela!");
+            alert.show();
+        }
     }
 
     public boolean showFXMLAnchorPaneProcessosOrdemDeServicoDialog(OrdemDeServico ordemDeServico) throws IOException {

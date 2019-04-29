@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="695.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLAnchorPaneProcessosOrdemDeServicoController">
+<AnchorPane id="AnchorPane" prefHeight="695.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLAnchorPaneProcessosOrdemDeServicoController">
    <children>
       <SplitPane dividerPositions="0.636986301369863" layoutX="281.0" layoutY="188.0" prefHeight="695.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -37,9 +42,9 @@
                   </Label>
                   <Group AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0">
                      <children>
-                        <Button fx:id="buttonAlterar" layoutX="215.0" layoutY="613.0" mnemonicParsing="false" prefWidth="64.0" text="Alterar" />
+                        <Button fx:id="buttonAlterar" layoutX="215.0" layoutY="613.0" mnemonicParsing="false" onAction="#handleButtonAlterar" prefWidth="64.0" text="Alterar" />
                         <Button fx:id="buttonInserir" layoutX="143.0" layoutY="613.0" mnemonicParsing="false" onAction="#handleButtonInserir" prefWidth="64.0" text="Inserir" />
-                        <Button fx:id="buttonRemover" layoutX="286.0" layoutY="613.0" mnemonicParsing="false" prefWidth="64.0" text="Remover" />
+                        <Button fx:id="buttonRemover" layoutX="286.0" layoutY="613.0" mnemonicParsing="false" onAction="#handleButtonRemover" prefWidth="64.0" text="Remover" />
                      </children>
                   </Group>
                   <GridPane layoutX="84.0" layoutY="243.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="180.0">
