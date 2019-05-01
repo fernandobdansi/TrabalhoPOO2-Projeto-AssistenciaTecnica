@@ -43,8 +43,7 @@
             </Menu>
           <Menu mnemonicParsing="false" text="Relatórios">
             <items>
-              <MenuItem fx:id="menuItemRelatoriosQuantidadeProdutos" mnemonicParsing="false" onAction="#handleMenuItemRelatoriosQuantidadeProdutos" text="Quantidade de Produtos em Estoque" />
-              <MenuItem fx:id="menuItemRelatoriosQuantidadeProdutosPorCategoria" mnemonicParsing="false" onAction="#handleMenuItemRelatoriosQuantidadeProdutosPorCategoria" text="Quantidade de Produtos em Estoque Por Categoria" />
+              <MenuItem fx:id="menuItemRelatoriosQuantidadeProdutos" mnemonicParsing="false" onAction="#handleMenuItemRelatoriosTecnicos" text="Total Serviços Dos Tecnicos" />
             </items>
           </Menu>
         </menus>

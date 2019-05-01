@@ -36,7 +36,7 @@
             <Button fx:id="buttonAtalhoDispositivos" mnemonicParsing="false" onAction="#handleMenuItemCadastrosDispositivo" prefHeight="100.0" prefWidth="200.0" text="Dispositivos" />
             <Button fx:id="buttonAtalhoOrdemDeServico" layoutX="316.0" mnemonicParsing="false" onAction="#handleMenuItemProcessosOrdemDeServico" prefHeight="100.0" prefWidth="200.0" text="Ordem de Serviços" />
             <Button fx:id="buttonAtalhoGrafico" layoutY="120.0" mnemonicParsing="false" onAction="#handleMenuItemGraficosOrdemPorMes" prefHeight="100.0" prefWidth="200.0" text="Gráfico Ordem De Serviços Por Mês" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="buttonAtalhoRelatorio" layoutX="316.0" layoutY="120.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Relatórios" />
+            <Button fx:id="buttonAtalhoRelatorio" layoutX="316.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleMenuItemRelatoriosTecnicos" prefHeight="100.0" prefWidth="200.0" text="Relatórios" />
          </children>
       </Group>
    </children>

@@ -113,4 +113,28 @@ public class TecnicoDAO {
         }
         return retorno;
     }
+
+    public List<Tecnico> listarTecnicoPorOrdem() {
+        String sql = "SELECT tecnico.*, sum(ordemdeservico.valortotal)\n"
+                + "FROM tecnico, ordemdeservico\n"
+                + "WHERE tecnico.cdtecnico=ordemdeservico.cdtecnico\n"
+                + "GROUP BY tecnico.cdtecnico";
+        List<Tecnico> retorno = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet resultado = stmt.executeQuery();
+            while (resultado.next()) {
+                Tecnico tecnico = new Tecnico();
+                tecnico.setCdTecnico(resultado.getInt("cdTecnico"));
+                tecnico.setNome(resultado.getString("nome"));
+                tecnico.setCpf(resultado.getString("cpf"));
+                tecnico.setTelefone(resultado.getString("telefone"));
+                tecnico.setValorTotalServico(resultado.getFloat("sum"));
+                retorno.add(tecnico);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TecnicoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
 }

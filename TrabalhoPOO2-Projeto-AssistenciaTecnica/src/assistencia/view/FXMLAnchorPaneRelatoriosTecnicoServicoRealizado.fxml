@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="695.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="assistencia.controller.FXMLAnchorPaneRelatoriosTecnicoServicoRealizadoController">
+   <children>
+      <VBox layoutX="357.0" layoutY="119.0" prefHeight="695.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="tableViewRelatorio" prefHeight="700.0" prefWidth="1024.0">
+              <columns>
+                <TableColumn fx:id="tableColumnNome" prefWidth="429.0" text="Nome" />
+                <TableColumn fx:id="tableColumnCPF" prefWidth="210.0" text="CPF" />
+                  <TableColumn fx:id="tableColumnTelefone" prefWidth="221.0" text="Telefone" />
+                  <TableColumn fx:id="tableColumnTotalServico" prefWidth="163.0" text="Total em Serviços" />
+              </columns>
+            </TableView>
+            <Button fx:id="buttonImprimir" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleImprimir" text="Imprimir Relatorio" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="450.0" right="347.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

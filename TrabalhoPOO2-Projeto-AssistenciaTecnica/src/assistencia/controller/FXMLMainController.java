@@ -80,7 +80,9 @@ public class FXMLMainController implements Initializable {
     }
 
     @FXML
-    private void handleMenuItemRelatoriosQuantidadeProdutos(ActionEvent event) {
+    private void handleMenuItemRelatoriosTecnicos(ActionEvent event) throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneRelatoriosTecnicoServicoRealizado.fxml"));
+        anchorPane.getChildren().setAll(a);
     }
 
     @FXML

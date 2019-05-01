@@ -58,4 +58,10 @@ public class FXMLMenuPrincipalController implements Initializable {
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneGraficosOrdemDeServicoPorMes.fxml"));
         anchorPane.getChildren().setAll(a);
     }
+
+    @FXML
+    private void handleMenuItemRelatoriosTecnicos(ActionEvent event) throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneRelatoriosTecnicoServicoRealizado.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
 }
