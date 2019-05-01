@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
  * @author Fernando
  */
 public class FXMLMenuPrincipalController implements Initializable {
+
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -49,6 +50,12 @@ public class FXMLMenuPrincipalController implements Initializable {
     @FXML
     private void handleMenuItemProcessosOrdemDeServico(ActionEvent event) throws IOException {
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneProcessosOrdemDeServico.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+
+    @FXML
+    private void handleMenuItemGraficosOrdemPorMes(ActionEvent event) throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneGraficosOrdemDeServicoPorMes.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 }

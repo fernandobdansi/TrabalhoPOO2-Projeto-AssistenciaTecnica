@@ -94,10 +94,8 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
 
         carregarTableViewOrdemDeServico();
 
-        // Limpando a exibição dos detalhes do Dispositivo
         selecionarItemTableViewOrdemDeServico(null);
 
-        // Listen acionado diante de quaisquer alterações na seleção de itens do TableView
         tableViewOrdemDeServico.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> selecionarItemTableViewOrdemDeServico(newValue));
     }
@@ -206,16 +204,13 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
                     itemServicoOrdemDAO.setConnection(connection);
                     servicoDAO.setConnection(connection);
 
-                    // Alterar a venda devido a alteração do valor
                     ordemDeServicoDAO.alterar(ordemDeServico);
 
-                    //Remover todos os itens de venda anteriormente associados a venda em questão
                     List<ItemServicoOrdem> listItensItemServicoOrdemsRemover = itemServicoOrdemDAO.listarPorOrdemDeServico(ordemDeServico);
                     for (ItemServicoOrdem itemServicoOrdemRemover : listItensItemServicoOrdemsRemover) {
                         itemServicoOrdemDAO.remover(itemServicoOrdemRemover);
                     }
 
-                    //Inserindo os itens de venda atualizados da venda em questão                    
                     for (ItemServicoOrdem itemServicoOrdemAdicionar : ordemDeServico.getItemServicoOrdem()) {
                         itemServicoOrdemAdicionar.setOrdemDeServico(ordemDeServico);
                         itemServicoOrdemDAO.inserir(itemServicoOrdemAdicionar);
@@ -244,18 +239,15 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
 
         AnchorPane page = (AnchorPane) loader.load();
 
-        // Criando um Estágio de Diálogo (Stage Dialog)
         Stage dialogStage = new Stage();
         dialogStage.setTitle("Registro de Ordem de Serviço");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
 
-        // Setando a Venda no Controller.
         FXMLAnchorPaneProcessosOrdemDeServicoDialogController controller = loader.getController();
         controller.setDialogStage(dialogStage);
         controller.setOrdemDeServico(ordemDeServico);
 
-        // Mostra o Dialog e espera até que o usuário o feche
         dialogStage.showAndWait();
 
         return controller.isButtonConfirmarClicked();

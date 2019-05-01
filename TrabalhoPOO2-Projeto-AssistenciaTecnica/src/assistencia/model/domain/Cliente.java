@@ -9,9 +9,9 @@ public class Cliente implements Serializable {
     private String cpf;
     private String telefone;
 
-    public Cliente(){
+    public Cliente() {
     }
-    
+
     public Cliente(int cdCliente, String nome, String cpf) {
         this.cdCliente = cdCliente;
         this.nome = nome;
@@ -41,7 +41,7 @@ public class Cliente implements Serializable {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
     public String getTelefone() {
         return telefone;
     }
@@ -54,5 +54,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return this.nome;
     }
-    
+
 }

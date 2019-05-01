@@ -1,6 +1,7 @@
 package assistencia.model.domain;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 
 public class ItemServicoOrdem {
 
@@ -8,6 +9,7 @@ public class ItemServicoOrdem {
     private double valor;
     private OrdemDeServico ordemDeServico;
     private Servico servico;
+    private String valorFormatado;
 
     public ItemServicoOrdem() {
     }
@@ -25,6 +27,15 @@ public class ItemServicoOrdem {
 
     public void setCdItemServicoOrdem(int cdItemServicoOrdem) {
         this.cdItemServicoOrdem = cdItemServicoOrdem;
+    }
+
+    public String getValorFormatado() {
+        valorFormatado = NumberFormat.getCurrencyInstance().format(valor);
+        return valorFormatado;
+    }
+
+    public void setValorFormatado(String valorFormatado) {
+        this.valorFormatado = String.valueOf(valor);
     }
 
     public double getValor() {

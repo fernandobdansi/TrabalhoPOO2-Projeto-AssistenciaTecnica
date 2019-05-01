@@ -22,6 +22,7 @@ import assistencia.model.domain.Status;
 import assistencia.model.domain.Tecnico;
 import java.net.URL;
 import java.sql.Connection;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -126,7 +127,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
         carregarComboBoxServicos();
 
         tableColumnServico.setCellValueFactory(new PropertyValueFactory<>("servico"));
-        tableColumnValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        tableColumnValor.setCellValueFactory(new PropertyValueFactory("valorFormatado"));
     }
 
     public Stage getDialogStage() {
@@ -144,7 +145,6 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
     public void setOrdemDeServico(OrdemDeServico ordemDeServico) {
         this.ordemDeServico = ordemDeServico;
 
-        //[No caso de alteração] Deixando selecionado os dados da venda escolhida
         comboBoxOrdemCliente.getSelectionModel().select(ordemDeServico.getCliente());
         datePickerOrdemEntrada.setValue(ordemDeServico.getDataEntrada());
         LocalDate localDate = LocalDate.of(1000, 1, 1);
@@ -159,7 +159,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
 
         observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
         tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
-        textFieldOrdemValorTotal.setText(String.format("%.2f", ordemDeServico.getValorTotal()));
+        textFieldOrdemValorTotal.setText(NumberFormat.getCurrencyInstance().format(ordemDeServico.getValorTotal()));
         textFieldOrdemProblema.setText(ordemDeServico.getDescricaoProblema());
 
     }
@@ -211,7 +211,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
                     observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
                     tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
 
-                    textFieldOrdemValorTotal.setText(String.format("%.2f", ordemDeServico.getValorTotal()));
+                    textFieldOrdemValorTotal.setText(NumberFormat.getCurrencyInstance().format(ordemDeServico.getValorTotal()));
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText("Problemas na escolha de Serviço!");
@@ -242,7 +242,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
             observableListItemServicoOrdems = FXCollections.observableArrayList(ordemDeServico.getItemServicoOrdem());
             tableViewServicosRealizados.setItems(observableListItemServicoOrdems);
 
-            textFieldOrdemValorTotal.setText(String.format("%.2f", ordemDeServico.getValorTotal()));
+            textFieldOrdemValorTotal.setText(NumberFormat.getCurrencyInstance().format(ordemDeServico.getValorTotal()));
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Problemas na escolha do Serviço Realizado");

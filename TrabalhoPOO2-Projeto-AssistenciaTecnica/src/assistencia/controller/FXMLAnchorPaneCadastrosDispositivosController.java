@@ -79,10 +79,8 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
 
         carregarTableViewDispositivo();
 
-        // Limpando a exibição dos detalhes do Dispositivo
         selecionarItemTableViewDispositivo(null);
 
-        // Listen acionado diante de quaisquer alterações na seleção de itens do TableView
         tableViewDispositivo.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> selecionarItemTableViewDispositivo(newValue));
 
@@ -168,24 +166,16 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
         loader.setLocation(FXMLAnchorPaneCadastrosDispositivoDialogController.class.getResource("/assistencia/view/FXMLAnchorPaneCadastrosDispositivoDialog.fxml"));
         AnchorPane page = (AnchorPane) loader.load();
 
-        // Criando um Estágio de Diálogo (Stage Dialog)
         Stage dialogStage = new Stage();
         dialogStage.setTitle("Cadastro de Dispositivo");
-        //Especifica a modalidade para esta fase . Isso deve ser feito antes de fazer o estágio visível. A modalidade pode ser: Modality.NONE , Modality.WINDOW_MODAL , ou Modality.APPLICATION_MODAL 
-        //dialogStage.initModality(Modality.WINDOW_MODAL);//WINDOW_MODAL (possibilita minimizar)
 
-        //Especifica a janela do proprietário para esta página, ou null para um nível superior.
-        //dialogStage.initOwner(null); //null deixa a Tela Principal livre para ser movida
-        //dialogStage.initOwner(this.tableViewClientes.getScene().getWindow()); //deixa a tela de Preenchimento dos dados como prioritária
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
 
-        // Setando o cliente no Controller.
         FXMLAnchorPaneCadastrosDispositivoDialogController controller = loader.getController();
         controller.setDialogStage(dialogStage);
         controller.setDispositivo(dispositivo);
 
-        // Mostra o Dialog e espera até que o usuário o feche
         dialogStage.setFocused(true);
 
         dialogStage.showAndWait();
