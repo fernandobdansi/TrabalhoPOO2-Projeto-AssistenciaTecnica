@@ -241,7 +241,7 @@ public class OrdemDeServicoDAO {
     }
 
     public Map<Integer, ArrayList> listarQuantidadeOrdemDeServicoPorMes() {
-        String sql = "select count(cdOrdemDeServico), extract(year from dataEntrada) as ano, extract(month from dataEntrada) as mes from ordemdeservico group by ano, mes order by ano, mes";
+        String sql = "select sum(valorTotal), extract(year from dataEntrada) as ano, extract(month from dataEntrada) as mes from ordemdeservico group by ano, mes order by ano, mes";
         Map<Integer, ArrayList> retorno = new HashMap();
 
         try {
@@ -252,12 +252,12 @@ public class OrdemDeServicoDAO {
                 ArrayList linha = new ArrayList();
                 if (!retorno.containsKey(resultado.getInt("ano"))) {
                     linha.add(resultado.getInt("mes"));
-                    linha.add(resultado.getInt("count"));
+                    linha.add(resultado.getInt("sum"));
                     retorno.put(resultado.getInt("ano"), linha);
                 } else {
                     ArrayList linhaNova = retorno.get(resultado.getInt("ano"));
                     linhaNova.add(resultado.getInt("mes"));
-                    linhaNova.add(resultado.getInt("count"));
+                    linhaNova.add(resultado.getInt("sum"));
                 }
             }
             return retorno;
