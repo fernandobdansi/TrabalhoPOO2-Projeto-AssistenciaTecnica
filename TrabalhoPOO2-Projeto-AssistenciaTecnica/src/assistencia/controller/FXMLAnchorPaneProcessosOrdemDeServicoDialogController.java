@@ -290,7 +290,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
     private boolean validarEntradaDeDados() {
         String errorMessage = "";
 
-        if (textFieldOrdemProblema.getText() == null || textFieldOrdemProblema.getText().length() == 0) {
+        if (textFieldOrdemProblema.getText() == null || textFieldOrdemProblema.getText().length() == 0 || textFieldOrdemProblema.getText().length() > 199) {
             errorMessage += "Descrição inválida!\n";
         }
 

@@ -142,10 +142,10 @@ public class FXMLAnchorPaneCadastrosDispositivoDialogController implements Initi
     private boolean validarEntradaDeDados() {
         String errorMessage = "";
 
-        if (textFieldDispositivoDescricao.getText() == null || textFieldDispositivoDescricao.getText().length() == 0) {
+        if (textFieldDispositivoDescricao.getText() == null || textFieldDispositivoDescricao.getText().length() == 0 || textFieldDispositivoDescricao.getText().length() > 30) {
             errorMessage += "Descrição inválida!\n";
         }
-        if (textFieldDispositivoNumSerie.getText() == null || textFieldDispositivoNumSerie.getText().length() == 0) {
+        if (textFieldDispositivoNumSerie.getText() == null || textFieldDispositivoNumSerie.getText().length() == 0 || textFieldDispositivoNumSerie.getText().length() > 30) {
             errorMessage += "Numero de Série inválido!\n";
         }
         if (comboBoxDispositivoCliente.getSelectionModel().getSelectedItem() == null) {
