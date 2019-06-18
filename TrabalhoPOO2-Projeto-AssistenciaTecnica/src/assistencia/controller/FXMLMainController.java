@@ -36,6 +36,9 @@ public class FXMLMainController implements Initializable {
     @FXML
     private MenuItem menuItemRelatoriosQuantidadeProdutosPorCategoria;
     @FXML
+    private MenuItem menuItemThreadsSockets;
+
+    @FXML
     private AnchorPane anchorPane;
 
     private void handleButtonAction(ActionEvent event) {
@@ -86,7 +89,9 @@ public class FXMLMainController implements Initializable {
     }
 
     @FXML
-    private void handleMenuItemRelatoriosQuantidadeProdutosPorCategoria(ActionEvent event) {
+    private void handleMenuItemThreadsSockets(ActionEvent event) throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLThreadsSockets.fxml"));
+        anchorPane.getChildren().setAll(a);
     }
 
 }
