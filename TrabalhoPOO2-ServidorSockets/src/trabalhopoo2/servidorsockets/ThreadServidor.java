@@ -69,7 +69,7 @@ public class ThreadServidor extends Thread {
         System.out.println("Usuarios Online!");
 
         for (String string : usuariosOnline) {
-            System.out.println("Cliente " + cont + " :" + string);
+            System.out.println("Cliente " + cont + ": " + string);
             cont++;
         }
         int quantidade = usuariosOnline.size();

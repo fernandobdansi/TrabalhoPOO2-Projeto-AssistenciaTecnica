@@ -20,7 +20,7 @@ public class Servidor {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(54321);
         System.out.println("A porta 54321 foi aberta!");
-        System.out.println("Server");
+        System.out.println("Server Iniciado - Recebendo Conexões!");
         while (true) {
             Socket socket;
             socket = serverSocket.accept();
