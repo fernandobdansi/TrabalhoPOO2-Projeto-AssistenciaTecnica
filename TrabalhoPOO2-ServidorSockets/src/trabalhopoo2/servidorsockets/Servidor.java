@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package trabalhopoo2.servidorsockets;
 
 /**
@@ -15,7 +14,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Servidor {
-    
+
     static int qtdClientes = 0;
 
     public static void main(String[] args) throws IOException {
@@ -25,12 +24,11 @@ public class Servidor {
         while (true) {
             Socket socket;
             socket = serverSocket.accept();
-            
+
             qtdClientes++;
-            
+
             //Mostrando endereço IP do cliente conectado
             //System.out.println("Cliente " + socket.getInetAddress().getHostAddress() + " conectado");
-
             ThreadServidor thread = new ThreadServidor(socket);
             thread.setName("Thread Servidor: " + String.valueOf(qtdClientes));
             thread.start();

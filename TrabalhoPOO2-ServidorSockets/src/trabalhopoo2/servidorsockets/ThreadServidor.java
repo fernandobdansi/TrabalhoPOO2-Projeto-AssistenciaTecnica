@@ -62,21 +62,20 @@ public class ThreadServidor extends Thread {
 
     public void atualizarUsuarios() throws IOException {
         ArrayList<String> usuariosOnline = new ArrayList();
-        int cont=0;
+        int cont = 0;
         for (Map.Entry<String, Socket> cliente : clientesMap.entrySet()) {
             usuariosOnline.add(cliente.getKey());
         }
         System.out.println("Usuarios Online!");
 
         for (String string : usuariosOnline) {
-            System.out.println("Cliente "+cont+" :"+string);
+            System.out.println("Cliente " + cont + " :" + string);
             cont++;
         }
         int quantidade = usuariosOnline.size();
         String qtd = String.valueOf(quantidade);
         enviarUsuariosOnline(qtd);
         numCli++;
-        
 
     }
 
