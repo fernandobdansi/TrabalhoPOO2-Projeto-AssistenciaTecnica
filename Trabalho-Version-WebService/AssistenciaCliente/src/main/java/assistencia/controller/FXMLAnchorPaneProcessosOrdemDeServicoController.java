@@ -5,11 +5,11 @@
  */
 package assistencia.controller;
 
-import assistencia.model.dao.ItemServicoOrdemDAO;
+/*import assistencia.model.dao.ItemServicoOrdemDAO;
 import assistencia.model.dao.OrdemDeServicoDAO;
 import assistencia.model.dao.ServicoDAO;
 import assistencia.model.database.Database;
-import assistencia.model.database.DatabaseFactory;
+import assistencia.model.database.DatabaseFactory;*/
 import assistencia.model.domain.ItemServicoOrdem;
 import assistencia.model.domain.OrdemDeServico;
 import java.io.IOException;
@@ -82,31 +82,31 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
 
     private List<OrdemDeServico> listOrdemDeServicos;
     private ObservableList<OrdemDeServico> observableListDispositivo;
-    private final Database database = DatabaseFactory.getDatabase("postgresql");
+   /* private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
     private final OrdemDeServicoDAO ordemDeServicoDAO = new OrdemDeServicoDAO();
     private final ItemServicoOrdemDAO itemServicoOrdemDAO = new ItemServicoOrdemDAO();
-    private final ServicoDAO servicoDAO = new ServicoDAO();
+    private final ServicoDAO servicoDAO = new ServicoDAO();*/
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ordemDeServicoDAO.setConnection(connection);
+        //ordemDeServicoDAO.setConnection(connection);
 
         carregarTableViewOrdemDeServico();
 
         selecionarItemTableViewOrdemDeServico(null);
 
-        tableViewOrdemDeServico.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> selecionarItemTableViewOrdemDeServico(newValue));
+        //tableViewOrdemDeServico.getSelectionModel().selectedItemProperty().addListener(
+               // (observable, oldValue, newValue) -> selecionarItemTableViewOrdemDeServico(newValue));
     }
 
     private void carregarTableViewOrdemDeServico() {
-        tableColumnOrdemCliente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
+        /*tableColumnOrdemCliente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
         tableColumnOrdemDispositivo.setCellValueFactory(new PropertyValueFactory<>("dispositivo"));
         tableColumnOrdemStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         tableColumnOrdemTecnico.setCellValueFactory(new PropertyValueFactory<>("tecnico"));
 
-        listOrdemDeServicos = ordemDeServicoDAO.listar();
+        listOrdemDeServicos = ordemDeServicoDAO.listar();*/
 
         observableListDispositivo = FXCollections.observableArrayList(listOrdemDeServicos);
         tableViewOrdemDeServico.setItems(observableListDispositivo);
@@ -143,7 +143,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
 
     @FXML
     public void handleButtonInserir() throws IOException {
-        OrdemDeServico ordemDeServico = new OrdemDeServico();
+        /*OrdemDeServico ordemDeServico = new OrdemDeServico();
         List<ItemServicoOrdem> listItemServicoOrdems = new ArrayList<>();
         ordemDeServico.setItemServicoOrdem(listItemServicoOrdems);
         ordemDeServico.setDataSaida(LocalDate.of(1000, 1, 1));
@@ -169,13 +169,13 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
                 }
                 Logger.getLogger(FXMLAnchorPaneProcessosOrdemDeServicoController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }*/
     }
 
     @FXML
     public void handleButtonRemover() throws IOException, SQLException {
         OrdemDeServico ordemDeServico = tableViewOrdemDeServico.getSelectionModel().getSelectedItem();
-        if (ordemDeServico != null) {
+        /*if (ordemDeServico != null) {
             connection.setAutoCommit(false);
             ordemDeServicoDAO.setConnection(connection);
             itemServicoOrdemDAO.setConnection(connection);
@@ -189,12 +189,12 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Por favor, escolha uma Ordem de Servico na Tabela!");
             alert.show();
-        }
+        }*/
     }
 
     @FXML
     public void handleButtonAlterar() throws IOException {
-        OrdemDeServico ordemDeServico = tableViewOrdemDeServico.getSelectionModel().getSelectedItem();
+       /* OrdemDeServico ordemDeServico = tableViewOrdemDeServico.getSelectionModel().getSelectedItem();
         if (ordemDeServico != null) {
             boolean buttonConfirmarClicked = showFXMLAnchorPaneProcessosOrdemDeServicoDialog(ordemDeServico);
             if (buttonConfirmarClicked) {
@@ -230,7 +230,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoController implements Initiali
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Por favor, escolha uma Ordem de Servico na Tabela!");
             alert.show();
-        }
+        }*/
     }
 
     public boolean showFXMLAnchorPaneProcessosOrdemDeServicoDialog(OrdemDeServico ordemDeServico) throws IOException {

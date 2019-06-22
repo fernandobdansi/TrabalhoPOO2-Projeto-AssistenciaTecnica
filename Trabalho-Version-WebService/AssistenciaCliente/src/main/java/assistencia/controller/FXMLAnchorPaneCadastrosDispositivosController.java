@@ -5,14 +5,13 @@
  */
 package assistencia.controller;
 
-import assistencia.model.dao.DispositivoDAO;
-import assistencia.model.database.Database;
-import assistencia.model.database.DatabaseFactory;
-import assistencia.model.domain.Cliente;
+/*import assistencia.model.dao.DispositivoDAO;
+ import assistencia.model.database.Database;
+ import assistencia.model.database.DatabaseFactory;*/
 import assistencia.model.domain.Dispositivo;
+import assistencia.service.DispositivoService;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -30,7 +29,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.postgresql.util.PSQLException;
 
 /**
  * FXML Controller class
@@ -69,20 +67,20 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
      */
     private List<Dispositivo> listDispositivo;
     private ObservableList<Dispositivo> observableListDispositivo;
-    private final Database database = DatabaseFactory.getDatabase("postgresql");
-    private final Connection connection = database.conectar();
-    private final DispositivoDAO dispositivoDAO = new DispositivoDAO();
+    /* private final Database database = DatabaseFactory.getDatabase("postgresql");
+     private final Connection connection = database.conectar();
+     private final DispositivoDAO dispositivoDAO = new DispositivoDAO();*/
+
+    private final DispositivoService dispositivoService = new DispositivoService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dispositivoDAO.setConnection(connection);
 
         carregarTableViewDispositivo();
 
         selecionarItemTableViewDispositivo(null);
 
-        tableViewDispositivo.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> selecionarItemTableViewDispositivo(newValue));
+        tableViewDispositivo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> selecionarItemTableViewDispositivo(newValue));
 
     }
 
@@ -92,7 +90,7 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
         if (dispositivo != null) {
             boolean buttonConfirmarClicked = showFXMLAnchorPaneCadastrosDispositivoDialog(dispositivo);
             if (buttonConfirmarClicked) {
-                dispositivoDAO.alterar(dispositivo);
+                dispositivoService.alterar(dispositivo);
                 carregarTableViewDispositivo();
             }
         } else {
@@ -108,7 +106,7 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
         boolean buttonConfirmarClicked = showFXMLAnchorPaneCadastrosDispositivoDialog(dispositivo);
         if (buttonConfirmarClicked) {
             System.out.println(dispositivo.getNumSerie());
-            dispositivoDAO.inserir(dispositivo);
+            dispositivoService.inserir(dispositivo);
             carregarTableViewDispositivo();
         }
     }
@@ -118,7 +116,7 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
         Dispositivo dispositivo = tableViewDispositivo.getSelectionModel().getSelectedItem();
         Boolean ret = true;
         if (dispositivo != null) {
-            ret = dispositivoDAO.remover(dispositivo);
+            dispositivoService.remover(dispositivo);
             carregarTableViewDispositivo();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -137,7 +135,7 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
         tableColumnDispositivoClienteNome.setCellValueFactory(new PropertyValueFactory<>("cliente"));
         tableColumnDispositivoNumSerie.setCellValueFactory(new PropertyValueFactory<>("numSerie"));
 
-        listDispositivo = dispositivoDAO.listar();
+        listDispositivo = dispositivoService.listar();
 
         observableListDispositivo = FXCollections.observableArrayList(listDispositivo);
         tableViewDispositivo.setItems(observableListDispositivo);

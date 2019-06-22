@@ -5,9 +5,9 @@
  */
 package assistencia.controller;
 
-import assistencia.model.dao.TecnicoDAO;
-import assistencia.model.database.Database;
-import assistencia.model.database.DatabaseFactory;
+//import assistencia.model.dao.TecnicoDAO;
+//import assistencia.model.database.Database;
+//import assistencia.model.database.DatabaseFactory;
 import assistencia.model.domain.Tecnico;
 import java.net.URL;
 import java.sql.Connection;
@@ -21,12 +21,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+//import net.sf.jasperreports.engine.JRException;
+//import net.sf.jasperreports.engine.JasperFillManager;
+//import net.sf.jasperreports.engine.JasperPrint;
+//import net.sf.jasperreports.engine.JasperReport;
+//import net.sf.jasperreports.engine.util.JRLoader;
+//import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * FXML Controller class
@@ -50,22 +50,22 @@ public class FXMLAnchorPaneRelatoriosTecnicoServicoRealizadoController implement
 
     private List<Tecnico> listTecnicos;
     private ObservableList<Tecnico> observableListTecnicos;
-    private final Database database = DatabaseFactory.getDatabase("postgresql");
-    private final Connection connection = database.conectar();
-    private final TecnicoDAO tecnicoDAO = new TecnicoDAO();
+    //private final Database database = DatabaseFactory.getDatabase("postgresql");
+    //private final Connection connection = database.conectar();
+    //final TecnicoDAO tecnicoDAO = new TecnicoDAO();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tecnicoDAO.setConnection(connection);
+        //tecnicoDAO.setConnection(connection);
 
         carregarTableViewTecnicos();
     }
 
     private void carregarTableViewTecnicos() {
-        tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        /*tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tableColumnCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         tableColumnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         tableColumnTotalServico.setCellValueFactory(new PropertyValueFactory<>("valorFormatado"));
@@ -73,15 +73,15 @@ public class FXMLAnchorPaneRelatoriosTecnicoServicoRealizadoController implement
         listTecnicos = tecnicoDAO.listarTecnicoPorOrdem();
 
         observableListTecnicos = FXCollections.observableArrayList(listTecnicos);
-        tableViewRelatorio.setItems(observableListTecnicos);
+        tableViewRelatorio.setItems(observableListTecnicos);*/
     }
 
-    public void handleImprimir() throws JRException {
+    /*public void handleImprimir() throws JRException {
         URL url = getClass().getResource("/assistencia/relatorios/JAVAFXMVRelatorioTecnicosServico.jasper");
         JasperReport report = (JasperReport) JRLoader.loadObject(url);
         JasperPrint print = JasperFillManager.fillReport(report, null, connection);
         JasperViewer viewer = new JasperViewer(print, false);
         viewer.setVisible(true);
-    }
+    }*/
 
 }

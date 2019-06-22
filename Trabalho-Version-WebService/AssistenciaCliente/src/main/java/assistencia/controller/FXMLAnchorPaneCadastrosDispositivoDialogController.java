@@ -5,15 +5,18 @@
  */
 package assistencia.controller;
 
-import assistencia.model.dao.ClienteDAO;
-import assistencia.model.dao.MarcaDAO;
-import assistencia.model.dao.ModeloDAO;
-import assistencia.model.database.Database;
-import assistencia.model.database.DatabaseFactory;
+/*import assistencia.model.dao.ClienteDAO;
+ import assistencia.model.dao.MarcaDAO;
+ import assistencia.model.dao.ModeloDAO;
+ import assistencia.model.database.Database;
+ import assistencia.model.database.DatabaseFactory;*/
 import assistencia.model.domain.Cliente;
 import assistencia.model.domain.Dispositivo;
 import assistencia.model.domain.Marca;
 import assistencia.model.domain.Modelo;
+import assistencia.service.ClienteService;
+import assistencia.service.MarcaService;
+import assistencia.service.ModeloService;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.List;
@@ -62,17 +65,18 @@ public class FXMLAnchorPaneCadastrosDispositivoDialogController implements Initi
     private ObservableList<Modelo> observableListModelo;
 
     //Atributos para manipulação de Banco de Dados
-    private final Database database = DatabaseFactory.getDatabase("postgresql");
-    private final Connection connection = database.conectar();
-    private final ClienteDAO clienteDAO = new ClienteDAO();
-    private final MarcaDAO marcaDAO = new MarcaDAO();
-    private final ModeloDAO modeloDAO = new ModeloDAO();
+    /*private final Database database = DatabaseFactory.getDatabase("postgresql");
+     private final Connection connection = database.conectar();
+     private final ClienteDAO clienteDAO = new ClienteDAO();
+     private final MarcaDAO marcaDAO = new MarcaDAO();
+     private final ModeloDAO modeloDAO = new ModeloDAO();*/
+    
+    private final ClienteService clienteService = new ClienteService();
+    private final ModeloService modeloService = new ModeloService();
+    private final MarcaService marcaService = new MarcaService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clienteDAO.setConnection(connection);
-        marcaDAO.setConnection(connection);
-        modeloDAO.setConnection(connection);
         carregarComboBoxClientes();
         carregarComboBoxMarca();
     }
@@ -116,20 +120,20 @@ public class FXMLAnchorPaneCadastrosDispositivoDialogController implements Initi
     }
 
     public void carregarComboBoxClientes() {
-        listClientes = clienteDAO.listar();
+        listClientes = clienteService.listar();
         observableListClientes = FXCollections.observableArrayList(listClientes);
         comboBoxDispositivoCliente.setItems(observableListClientes);
     }
 
     public void carregarComboBoxMarca() {
-        listMarca = marcaDAO.listar();
+        listMarca = marcaService.listar();
         observableListMarca = FXCollections.observableArrayList(listMarca);
         comboBoxDispositivoMarca.setItems(observableListMarca);
     }
 
     public void carregarComboBoxModelo() {
-        Marca marca = (Marca) comboBoxDispositivoMarca.getSelectionModel().getSelectedItem();
-        listModelo = modeloDAO.listarModeloPorMarca(marca);
+        //Marca marca = (Marca) comboBoxDispositivoMarca.getSelectionModel().getSelectedItem();
+        listModelo = modeloService.listar();
         observableListModelo = FXCollections.observableArrayList(listModelo);
         comboBoxDispositivoModelo.setItems(observableListModelo);
     }

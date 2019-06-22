@@ -83,7 +83,7 @@ public class DispositivoDAO {
     }
 
     public List<Dispositivo> listar() {
-        String sql = "SELECT * FROM dispositivo";
+        String sql = "SELECT cddispositivo, numserie, descricao, cdmodelo, cdmarca, cdcliente FROM dispositivo";
         List<Dispositivo> retorno = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);

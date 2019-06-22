@@ -5,9 +5,9 @@
  */
 package assistencia.controller;
 
-import assistencia.model.dao.OrdemDeServicoDAO;
+/*import assistencia.model.dao.OrdemDeServicoDAO;
 import assistencia.model.database.Database;
-import assistencia.model.database.DatabaseFactory;
+import assistencia.model.database.DatabaseFactory;*/
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -38,9 +38,9 @@ public class FXMLAnchorPaneGraficosOrdemDeServicoPorMesController implements Ini
     private NumberAxis numberAxis;
 
     private final ObservableList<String> observableListMeses = FXCollections.observableArrayList();
-    private final Database database = DatabaseFactory.getDatabase("postgresql");
-    private final Connection connection = database.conectar();
-    private final OrdemDeServicoDAO ordemDeServicoDAO = new OrdemDeServicoDAO();
+   // private final Database database = DatabaseFactory.getDatabase("postgresql");
+    //private final Connection connection = database.conectar();
+    //private final OrdemDeServicoDAO ordemDeServicoDAO = new OrdemDeServicoDAO();
 
     /**
      * Initializes the controller class.
@@ -51,9 +51,9 @@ public class FXMLAnchorPaneGraficosOrdemDeServicoPorMesController implements Ini
         observableListMeses.addAll(Arrays.asList(arrayMeses));
         categoryAxis.setCategories(observableListMeses);
 
-        ordemDeServicoDAO.setConnection(connection);
-        Map<Integer, ArrayList> dados = ordemDeServicoDAO.listarQuantidadeOrdemDeServicoPorMes();
-        for (Map.Entry<Integer, ArrayList> dadosItem : dados.entrySet()) {
+        //ordemDeServicoDAO.setConnection(connection);
+        //Map<Integer, ArrayList> dados = ordemDeServicoDAO.listarQuantidadeOrdemDeServicoPorMes();
+        /*for (Map.Entry<Integer, ArrayList> dadosItem : dados.entrySet()) {
             XYChart.Series<String, Integer> series = new XYChart.Series<>();
             series.setName(dadosItem.getKey().toString());
             for (int i = 0; i < dadosItem.getValue().size(); i = i + 2) {
@@ -64,7 +64,7 @@ public class FXMLAnchorPaneGraficosOrdemDeServicoPorMesController implements Ini
                 series.getData().add(new XYChart.Data<>(mes, quantidade));
             }
             barChartOrdens.getData().add(series);
-        }
+        }*/
     }
 
     public String retornaNomeMes(int mes) {

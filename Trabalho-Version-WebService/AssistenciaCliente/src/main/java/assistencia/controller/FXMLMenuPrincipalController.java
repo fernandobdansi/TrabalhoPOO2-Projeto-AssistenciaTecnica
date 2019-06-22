@@ -43,25 +43,25 @@ public class FXMLMenuPrincipalController implements Initializable {
 
     @FXML
     private void handleMenuItemCadastrosDispositivo(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneCadastrosDispositivos.fxml"));
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneCadastrosDispositivos.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 
     @FXML
     private void handleMenuItemProcessosOrdemDeServico(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneProcessosOrdemDeServico.fxml"));
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneProcessosOrdemDeServico.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 
     @FXML
     private void handleMenuItemGraficosOrdemPorMes(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneGraficosOrdemDeServicoPorMes.fxml"));
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneGraficosOrdemDeServicoPorMes.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 
     @FXML
     private void handleMenuItemRelatoriosTecnicos(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/assistencia/view/FXMLAnchorPaneRelatoriosTecnicoServicoRealizado.fxml"));
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneRelatoriosTecnicoServicoRealizado.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 }

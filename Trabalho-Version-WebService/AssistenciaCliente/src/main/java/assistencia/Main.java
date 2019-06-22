@@ -20,13 +20,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/FXMLMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXMLMain.fxml"));
 
         Scene scene = new Scene(root);
 
-        Image image = new Image("/assistencia/resources/icon.png");
+        //Image image = new Image("/assistencia/resources/icon.png");
 
-        stage.getIcons().add(image);
+        //stage.getIcons().add(image);
         stage.setTitle("Assistência Técnica SoftWare");
         //stage.setResizable(false);
         stage.setScene(scene);

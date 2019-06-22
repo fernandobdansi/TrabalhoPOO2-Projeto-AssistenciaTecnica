@@ -32,7 +32,7 @@ public class DispositivoResource {
 
     @GET
     @Produces("application/json ; charset=UTF-8")
-    @Path("{cdCliente}")
+    @Path("{cdDispositivo}")
     public Dispositivo buscar(@PathParam("cdDispositivo") int cdDispositivo) {
         Dispositivo dispositivo = new Dispositivo();
         dispositivo.setCdDispositivo(cdDispositivo);

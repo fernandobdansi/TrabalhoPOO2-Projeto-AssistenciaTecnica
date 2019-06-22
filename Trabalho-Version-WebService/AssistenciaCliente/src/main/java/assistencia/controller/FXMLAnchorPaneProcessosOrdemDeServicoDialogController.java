@@ -5,14 +5,6 @@
  */
 package assistencia.controller;
 
-import assistencia.model.dao.ClienteDAO;
-import assistencia.model.dao.DispositivoDAO;
-import assistencia.model.dao.ItemServicoOrdemDAO;
-import assistencia.model.dao.ServicoDAO;
-import assistencia.model.dao.StatusDAO;
-import assistencia.model.dao.TecnicoDAO;
-import assistencia.model.database.Database;
-import assistencia.model.database.DatabaseFactory;
 import assistencia.model.domain.Cliente;
 import assistencia.model.domain.Dispositivo;
 import assistencia.model.domain.ItemServicoOrdem;
@@ -99,26 +91,26 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
     private List<ItemServicoOrdem> listItemServicoOrdems;
     private ObservableList<ItemServicoOrdem> observableListItemServicoOrdems;
 
-    private final Database database = DatabaseFactory.getDatabase("postgresql");
+    /*private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
     private final ClienteDAO clienteDAO = new ClienteDAO();
     private final DispositivoDAO dispositivoDAO = new DispositivoDAO();
     private final TecnicoDAO tecnicoDAO = new TecnicoDAO();
     private final StatusDAO statusDAO = new StatusDAO();
     private final ServicoDAO servicoDAO = new ServicoDAO();
-    private final ItemServicoOrdemDAO itemServicoOrdemDAO = new ItemServicoOrdemDAO();
+    private final ItemServicoOrdemDAO itemServicoOrdemDAO = new ItemServicoOrdemDAO();*/
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clienteDAO.setConnection(connection);
+        /*clienteDAO.setConnection(connection);
         dispositivoDAO.setConnection(connection);
         tecnicoDAO.setConnection(connection);
         statusDAO.setConnection(connection);
         servicoDAO.setConnection(connection);
-        itemServicoOrdemDAO.setConnection(connection);
+        itemServicoOrdemDAO.setConnection(connection);*/
 
         carregarComboBoxClientes();
         //carregarComboBoxDispositivo();
@@ -126,7 +118,7 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
         carregarComboBoxStatus();
         carregarComboBoxServicos();
 
-        tableColumnServico.setCellValueFactory(new PropertyValueFactory<>("servico"));
+        //tableColumnServico.setCellValueFactory(new PropertyValueFactory<>("servico"));
         tableColumnValor.setCellValueFactory(new PropertyValueFactory("valorFormatado"));
     }
 
@@ -257,32 +249,32 @@ public class FXMLAnchorPaneProcessosOrdemDeServicoDialogController implements In
     }
 
     public void carregarComboBoxClientes() {
-        listClientes = clienteDAO.listar();
+        //listClientes = clienteDAO.listar();
         observableListClientes = FXCollections.observableArrayList(listClientes);
         comboBoxOrdemCliente.setItems(observableListClientes);
     }
 
     public void carregarComboBoxDispositivo() {
         Cliente cliente = (Cliente) comboBoxOrdemCliente.getSelectionModel().getSelectedItem();
-        listDispositivos = dispositivoDAO.listarPorCliente(cliente);
+        //listDispositivos = dispositivoDAO.listarPorCliente(cliente);
         observableListDispositivos = FXCollections.observableArrayList(listDispositivos);
         comboBoxOrdemDispositivo.setItems(observableListDispositivos);
     }
 
     public void carregarComboBoxTecnico() {
-        listTecnico = tecnicoDAO.listar();
+        //listTecnico = tecnicoDAO.listar();
         observableListTecnicos = FXCollections.observableArrayList(listTecnico);
         comboBoxOrdemTecnico.setItems(observableListTecnicos);
     }
 
     public void carregarComboBoxStatus() {
-        listStatuses = statusDAO.listar();
+        //listStatuses = statusDAO.listar();
         observableListStatuses = FXCollections.observableArrayList(listStatuses);
         comboBoxOrdemStatus.setItems(observableListStatuses);
     }
 
     public void carregarComboBoxServicos() {
-        listServicos = servicoDAO.listar();
+        //listServicos = servicoDAO.listar();
         observableListServicos = FXCollections.observableArrayList(listServicos);
         comboBoxOrdemServicos.setItems(observableListServicos);
     }
