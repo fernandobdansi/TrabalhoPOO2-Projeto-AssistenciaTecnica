@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLMainController">
+   <children>
+      <MenuBar>
+        <menus>
+            <Menu mnemonicParsing="false" onAction="#handleMenuItemHome" text="Home">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemHome" text="Tela Inicial" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Cadastros">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuItemCadastrosDispositivo" text="Dispositivo" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Processos">
+            <items>
+              <MenuItem fx:id="menuItemProcessosOrdemDeServico" mnemonicParsing="false" onAction="#handleMenuItemProcessosOrdemDeServico" text="Ordem De Serviço" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Gráficos">
+               <items>
+                  <MenuItem fx:id="menuItemGraficosVendasPorMes" mnemonicParsing="false" onAction="#handleMenuItemGraficosOrdemPorMes" text="Ordem De Serviço Por Mês" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Relatórios">
+            <items>
+              <MenuItem fx:id="menuItemRelatoriosQuantidadeProdutos" mnemonicParsing="false" onAction="#handleMenuItemRelatoriosTecnicos" text="Total Serviços Dos Tecnicos" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Threads e Sockets">
+               <items>
+                  <MenuItem fx:id="menuItemThreadsSockets" mnemonicParsing="false" onAction="#handleMenuItemThreadsSockets" text="Abrir Threads e Sockets" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="anchorPane" prefHeight="0.0" prefWidth="1024.0" />
+   </children>
+</VBox>
