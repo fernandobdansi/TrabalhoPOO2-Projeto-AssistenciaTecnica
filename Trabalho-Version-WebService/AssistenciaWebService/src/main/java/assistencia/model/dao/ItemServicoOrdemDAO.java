@@ -5,6 +5,7 @@
  */
 package assistencia.model.dao;
 
+import assistencia.model.database.DatabaseFactory;
 import assistencia.model.domain.ItemServicoOrdem;
 import assistencia.model.domain.OrdemDeServico;
 import assistencia.model.domain.Servico;
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class ItemServicoOrdemDAO {
 
-    private Connection connection;
+    private Connection connection =  DatabaseFactory.getDatabase("postgresql").conectar();
 
     public Connection getConnection() {
         return connection;

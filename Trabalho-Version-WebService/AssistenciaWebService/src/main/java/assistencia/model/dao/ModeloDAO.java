@@ -5,6 +5,7 @@
  */
 package assistencia.model.dao;
 
+import assistencia.model.database.DatabaseFactory;
 import assistencia.model.domain.Marca;
 import assistencia.model.domain.Modelo;
 import java.sql.Connection;
@@ -22,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class ModeloDAO {
 
-    private Connection connection;
+    private Connection connection =  DatabaseFactory.getDatabase("postgresql").conectar();
 
     public Connection getConnection() {
         return connection;

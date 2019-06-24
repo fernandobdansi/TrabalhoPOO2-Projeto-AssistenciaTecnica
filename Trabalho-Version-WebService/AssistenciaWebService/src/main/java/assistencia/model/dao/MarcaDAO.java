@@ -5,6 +5,7 @@
  */
 package assistencia.model.dao;
 
+import assistencia.model.database.DatabaseFactory;
 import assistencia.model.domain.Marca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class MarcaDAO {
 
-    private Connection connection;
+    private Connection connection =  DatabaseFactory.getDatabase("postgresql").conectar();
 
     public Connection getConnection() {
         return connection;

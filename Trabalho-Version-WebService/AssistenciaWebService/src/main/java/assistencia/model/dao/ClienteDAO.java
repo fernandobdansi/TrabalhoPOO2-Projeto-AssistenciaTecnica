@@ -1,5 +1,7 @@
 package assistencia.model.dao;
 
+import assistencia.model.database.DatabaseFactory;
+import assistencia.model.domain.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,11 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import assistencia.model.domain.Cliente;
 
 public class ClienteDAO {
 
-    private Connection connection;
+    private Connection connection =  DatabaseFactory.getDatabase("postgresql").conectar();
 
     public Connection getConnection() {
         return connection;
