@@ -161,7 +161,7 @@ public class FXMLAnchorPaneCadastrosDispositivosController implements Initializa
 
     public boolean showFXMLAnchorPaneCadastrosDispositivoDialog(Dispositivo dispositivo) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(FXMLAnchorPaneCadastrosDispositivoDialogController.class.getResource("/assistencia/view/FXMLAnchorPaneCadastrosDispositivoDialog.fxml"));
+        loader.setLocation(FXMLAnchorPaneCadastrosDispositivoDialogController.class.getResource("/fxml/FXMLAnchorPaneCadastrosDispositivoDialog.fxml"));
         AnchorPane page = (AnchorPane) loader.load();
 
         Stage dialogStage = new Stage();

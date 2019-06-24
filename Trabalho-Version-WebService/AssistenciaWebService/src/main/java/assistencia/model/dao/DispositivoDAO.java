@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  */
 public class DispositivoDAO {
 
-    private Connection connection =  DatabaseFactory.getDatabase("postgresql").conectar();
+    private Connection connection = DatabaseFactory.getDatabase("postgresql").conectar();
 
     public Connection getConnection() {
         return connection;
@@ -149,8 +149,6 @@ public class DispositivoDAO {
                 modelo.setCdModelo(resultado.getInt("cdModelo"));
 
                 //Obtendo os dados completos do Cliente associado à Dispositivo
-
-
                 //Obtendo os dados completos do Marca associado à Dispositivo
                 MarcaDAO marcaDAO = new MarcaDAO();
                 marcaDAO.setConnection(connection);

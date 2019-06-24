@@ -31,7 +31,7 @@ import java.util.logging.Logger;
  */
 public class OrdemDeServicoDAO {
 
-    private Connection connection =  DatabaseFactory.getDatabase("postgresql").conectar();
+    private Connection connection = DatabaseFactory.getDatabase("postgresql").conectar();
 
     public Connection getConnection() {
         return connection;
