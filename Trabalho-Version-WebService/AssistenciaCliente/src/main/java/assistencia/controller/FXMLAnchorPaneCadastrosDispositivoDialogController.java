@@ -79,6 +79,7 @@ public class FXMLAnchorPaneCadastrosDispositivoDialogController implements Initi
     public void initialize(URL url, ResourceBundle rb) {
         carregarComboBoxClientes();
         carregarComboBoxMarca();
+        carregarComboBoxModelo();
     }
 
     public Stage getDialogStage() {

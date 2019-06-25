@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assistencia.controller.FXMLAnchorPaneCadastrosDispositivoDialogController">
    <children>
       <GridPane layoutX="112.0" layoutY="84.0" prefHeight="382.0" prefWidth="590.0">
@@ -30,7 +29,7 @@
             <Label text="Cliente:" />
             <TextField fx:id="textFieldDispositivoNumSerie" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="textFieldDispositivoDescricao" prefHeight="46.0" prefWidth="468.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="comboBoxDispositivoMarca" onAction="#carregarComboBoxModelo" prefHeight="25.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboBoxDispositivoMarca" prefHeight="25.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="comboBoxDispositivoModelo" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ComboBox fx:id="comboBoxDispositivoCliente" prefWidth="280.0" GridPane.columnIndex="1" />
          </children>
