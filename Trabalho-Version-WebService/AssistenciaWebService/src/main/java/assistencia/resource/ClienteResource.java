@@ -8,6 +8,7 @@ package assistencia.resource;
 import assistencia.model.dao.ClienteDAO;
 import assistencia.model.domain.Cliente;
 import assistencia.service.ClienteService;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -35,7 +36,7 @@ public class ClienteResource {
     @GET
     @Produces("application/json ; charset=UTF-8")
     @Path("{cdCliente}")
-    public Cliente buscar(@PathParam("cdCliente") int cdCliente) {
+    public Cliente buscar(@PathParam("cdCliente") int cdCliente) throws SQLException {
         Cliente cliente = new Cliente();
         cliente.setCdCliente(cdCliente);
         cliente = clienteService.buscar(cliente);
@@ -56,7 +57,7 @@ public class ClienteResource {
 
     @GET
     @Produces("application/json ; charset=UTF-8")
-    public List<Cliente> listar() {
+    public List<Cliente> listar() throws SQLException {
         List<Cliente> lista;
         lista = clienteService.listar();
         return lista;
@@ -65,14 +66,14 @@ public class ClienteResource {
     @POST
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean inserir(Cliente cliente) {
+    public boolean inserir(Cliente cliente) throws SQLException {
         return clienteService.inserir(cliente);
     }
 
     @PUT
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean alterar(Cliente cliente) {
+    public boolean alterar(Cliente cliente) throws SQLException {
         return clienteService.alterar(cliente);
     }
 
@@ -80,7 +81,7 @@ public class ClienteResource {
     @Path("{cdCliente}")
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean remover(@PathParam("cdCliente") int cdCliente) {
+    public boolean remover(@PathParam("cdCliente") int cdCliente) throws SQLException {
         Cliente cliente = new Cliente();
         cliente.setCdCliente(cdCliente);
         return clienteService.remover(cliente);

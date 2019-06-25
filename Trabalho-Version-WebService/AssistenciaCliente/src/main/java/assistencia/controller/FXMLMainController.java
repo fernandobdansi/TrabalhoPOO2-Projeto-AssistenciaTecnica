@@ -65,32 +65,8 @@ public class FXMLMainController implements Initializable {
     }
 
     @FXML
-    private void handleMenuItemProcessosOrdemDeServico(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneProcessosOrdemDeServico.fxml"));
-        anchorPane.getChildren().setAll(a);
-    }
-
-    @FXML
     private void handleMenuItemHome(ActionEvent event) throws IOException {
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLMenuPrincipal.fxml"));
-        anchorPane.getChildren().setAll(a);
-    }
-
-    @FXML
-    private void handleMenuItemGraficosOrdemPorMes(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneGraficosOrdemDeServicoPorMes.fxml"));
-        anchorPane.getChildren().setAll(a);
-    }
-
-    @FXML
-    private void handleMenuItemRelatoriosTecnicos(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneRelatoriosTecnicoServicoRealizado.fxml"));
-        anchorPane.getChildren().setAll(a);
-    }
-
-    @FXML
-    private void handleMenuItemThreadsSockets(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLThreadsSockets.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 

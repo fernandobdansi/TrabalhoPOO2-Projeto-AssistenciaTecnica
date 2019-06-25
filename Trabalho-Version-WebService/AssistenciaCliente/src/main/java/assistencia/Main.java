@@ -24,9 +24,9 @@ public class Main extends Application {
 
         Scene scene = new Scene(root);
 
-        //Image image = new Image("/assistencia/resources/icon.png");
+        Image image = new Image("/fxml/icon.png");
 
-        //stage.getIcons().add(image);
+        stage.getIcons().add(image);
         stage.setTitle("Assistência Técnica SoftWare");
         //stage.setResizable(false);
         stage.setScene(scene);

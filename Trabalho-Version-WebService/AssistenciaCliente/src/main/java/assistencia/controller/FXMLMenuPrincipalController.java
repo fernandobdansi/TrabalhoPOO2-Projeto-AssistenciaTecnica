@@ -47,21 +47,4 @@ public class FXMLMenuPrincipalController implements Initializable {
         anchorPane.getChildren().setAll(a);
     }
 
-    @FXML
-    private void handleMenuItemProcessosOrdemDeServico(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneProcessosOrdemDeServico.fxml"));
-        anchorPane.getChildren().setAll(a);
-    }
-
-    @FXML
-    private void handleMenuItemGraficosOrdemPorMes(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneGraficosOrdemDeServicoPorMes.fxml"));
-        anchorPane.getChildren().setAll(a);
-    }
-
-    @FXML
-    private void handleMenuItemRelatoriosTecnicos(ActionEvent event) throws IOException {
-        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/fxml/FXMLAnchorPaneRelatoriosTecnicoServicoRealizado.fxml"));
-        anchorPane.getChildren().setAll(a);
-    }
 }

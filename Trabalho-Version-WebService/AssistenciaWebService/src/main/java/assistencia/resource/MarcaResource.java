@@ -7,6 +7,7 @@ package assistencia.resource;
 
 import assistencia.model.domain.Marca;
 import assistencia.service.MarcaService;
+import java.sql.SQLException;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -32,7 +33,7 @@ public class MarcaResource {
     @GET
     @Produces("application/json ; charset=UTF-8")
     @Path("{cdCliente}")
-    public Marca buscar(@PathParam("cdCliente") int cdMarca) {
+    public Marca buscar(@PathParam("cdCliente") int cdMarca) throws SQLException {
         Marca marca = new Marca();
         marca.setCdMarca(cdMarca);
         marca = marcaService.buscar(marca);
@@ -41,7 +42,7 @@ public class MarcaResource {
 
     @GET
     @Produces("application/json ; charset=UTF-8")
-    public List<Marca> listar() {
+    public List<Marca> listar() throws SQLException {
         List<Marca> lista;
         lista = marcaService.listar();
         return lista;
@@ -50,14 +51,14 @@ public class MarcaResource {
     @POST
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean inserir(Marca marca) {
+    public boolean inserir(Marca marca) throws SQLException {
         return marcaService.inserir(marca);
     }
 
     @PUT
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean alterar(Marca marca) {
+    public boolean alterar(Marca marca) throws SQLException {
         return marcaService.alterar(marca);
     }
 
@@ -65,7 +66,7 @@ public class MarcaResource {
     @Path("{cdMarca}")
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean remover(@PathParam("cdCliente") int cdMarca) {
+    public boolean remover(@PathParam("cdCliente") int cdMarca) throws SQLException {
         Marca marca = new Marca();
         marca.setCdMarca(cdMarca);
         return marcaService.remover(marca);

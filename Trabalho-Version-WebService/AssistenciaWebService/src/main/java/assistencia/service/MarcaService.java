@@ -7,6 +7,7 @@ package assistencia.service;
 
 import assistencia.model.dao.MarcaDAO;
 import assistencia.model.domain.Marca;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,26 +16,46 @@ import java.util.List;
  */
 public class MarcaService {
 
-    private MarcaDAO marcaDAO = new MarcaDAO();
+    private MarcaDAO clienteDAO = new MarcaDAO();
 
-    public Marca buscar(Marca obj) {
-        return marcaDAO.buscar(obj);
+    public Marca buscar(Marca obj) throws SQLException {
+
+        Marca obj1;
+        obj1 = clienteDAO.buscar(obj);
+        clienteDAO.getConnection().close();
+        return obj1;
+
     }
 
-    public List<Marca> listar() {
-        return marcaDAO.listar();
+    public List<Marca> listar() throws SQLException {
+
+        List<Marca> obj1 = clienteDAO.listar();
+        clienteDAO.getConnection().close();
+
+        return obj1;
+
     }
 
-    public boolean inserir(Marca obj) {
-        return marcaDAO.inserir(obj);
+    public boolean inserir(Marca obj) throws SQLException {
+
+        Boolean bln = clienteDAO.inserir(obj);
+        clienteDAO.getConnection().close();
+
+        return bln;
     }
 
-    public boolean alterar(Marca obj) {
-        return marcaDAO.alterar(obj);
+    public boolean alterar(Marca obj) throws SQLException {
+        Boolean bln = clienteDAO.alterar(obj);
+        clienteDAO.getConnection().close();
+
+        return bln;
     }
 
-    public boolean remover(Marca obj) {
-        return marcaDAO.remover(obj);
+    public boolean remover(Marca obj) throws SQLException {
+        Boolean bln = clienteDAO.remover(obj);
+        clienteDAO.getConnection().close();
+
+        return bln;
     }
 
 }

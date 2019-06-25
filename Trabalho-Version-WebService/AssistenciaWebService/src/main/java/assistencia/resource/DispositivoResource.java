@@ -8,6 +8,7 @@ package assistencia.resource;
 
 import assistencia.model.domain.Dispositivo;
 import assistencia.service.DispositivoService;
+import java.sql.SQLException;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -33,7 +34,7 @@ public class DispositivoResource {
     @GET
     @Produces("application/json ; charset=UTF-8")
     @Path("{cdDispositivo}")
-    public Dispositivo buscar(@PathParam("cdDispositivo") int cdDispositivo) {
+    public Dispositivo buscar(@PathParam("cdDispositivo") int cdDispositivo) throws SQLException {
         Dispositivo dispositivo = new Dispositivo();
         dispositivo.setCdDispositivo(cdDispositivo);
         dispositivo = dispositivoService.buscar(dispositivo);
@@ -42,7 +43,7 @@ public class DispositivoResource {
 
     @GET
     @Produces("application/json ; charset=UTF-8")
-    public List<Dispositivo> listar() {
+    public List<Dispositivo> listar() throws SQLException {
         List<Dispositivo> lista;
         lista = dispositivoService.listar();
         return lista;
@@ -51,14 +52,14 @@ public class DispositivoResource {
     @POST
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean inserir(Dispositivo dispositivo) {
+    public boolean inserir(Dispositivo dispositivo) throws SQLException {
         return dispositivoService.inserir(dispositivo);
     }
 
     @PUT
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean alterar(Dispositivo dispositivo) {
+    public boolean alterar(Dispositivo dispositivo) throws SQLException {
         return dispositivoService.alterar(dispositivo);
     }
 
@@ -66,7 +67,7 @@ public class DispositivoResource {
     @Path("{cdDispositivo}")
     @Consumes("application/json ; charset=UTF-8")
     @Produces("text/plain")
-    public boolean remover(@PathParam("cdDispositivo") int cdDispositivo) {
+    public boolean remover(@PathParam("cdDispositivo") int cdDispositivo) throws SQLException {
         Dispositivo dispositivo = new Dispositivo();
         dispositivo.setCdDispositivo(cdDispositivo);
         return dispositivoService.remover(dispositivo);
