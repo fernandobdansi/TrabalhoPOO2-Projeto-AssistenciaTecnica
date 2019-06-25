@@ -1,5 +1,5 @@
-# TrabalhoPOO2 Projeto AssistenciaTecnica
-Trabalho feito para disciplina de Programação Orientada a Objetos II onde e implementado um programa em Java para realizar e organizar as ordens de serviço de uma assistencia tecnica de smartphones.
+# Trabalho POO2 Projeto AssistenciaTecnica
+Trabalho feito para disciplina de Programação Orientada a Objetos II onde e implementado um programa em Java para realizar e organizar as ordens de serviço de uma assistência técnica de smartphones.
 ## Etapas do Trabalho:
 
 #### Etapa 1: Projeto JavaFX MVC: CRUD
@@ -17,7 +17,7 @@ Nesta etapa devem ser adicionadas ao projeto funcionalidades relacionadas a prog
 #### Etapa 5: Projeto JavaFX MVC: Web Services RESTful JSON
 Nesta etapa deve ser elaborado um Web Services de arquitetura orientada a recursos ROA (Resource-Oriented Architecture) baseado no protocolo REST (Representational State Transfer) e linguagem JSON (JavaScript Object Notation). Em resumo, um Web Services RESTful JSON.
 
-Todas Etapas se encontram Finalizadas e Disponiveis para Consulta.
+Todas Etapas se encontram Finalizadas e Disponíveis para Consulta.
 
 By: [Fernando Bueno Dansi](https://github.com/FBuenoD)
 
